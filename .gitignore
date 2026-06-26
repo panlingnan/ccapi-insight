@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Vercel
+.vercel/
+
+# Secrets / local env (never commit credentials)
+.env
+.env.*
+*.local
+
+# OS
+.DS_Store

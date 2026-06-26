@@ -1,0 +1,1815 @@
+[
+  {
+    "TypeName": "Volcengine::VeenEdge::VPC",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::VeenEdge::VPC",
+    "Description": "边缘计算自定义VPC实例，用于在边缘节点创建独立的虚拟网络环境",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::FWCenter::ControlPolicy",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::FWCenter::ControlPolicy",
+    "Description": "互联网边界防火墙访问控制策略。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::FWCenter::AddressBook",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::FWCenter::AddressBook",
+    "Description": "云防火墙访问控制地址簿，用于集中管理一组 IPv4/IPv6 地址、端口或域名，可在访问控制策略中作为源或目的引用。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketWebsite",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketWebsite",
+    "Description": "TOS 存储桶的静态网站托管配置。您可以将存储桶配置为静态网站托管模式，并通过存储桶域名访问该静态网站。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Organization::ServiceControlPolicyEnabler",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::Organization::ServiceControlPolicyEnabler",
+    "Description": "服务控制策略开启状态。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::WAF::HostGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::WAF::HostGroup",
+    "Description": "域名组用于对多个域名进行集中管理，可批量关联规则并统一维护。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DirectConnect::Connection",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::DirectConnect::Connection",
+    "Description": "物理专线是专线连接服务中的独享物理连接资源，用于连接本地 IDC 与火山引擎接入点。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RocketMQ::AccessKey",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RocketMQ::AccessKey",
+    "Description": "RocketMQ 密钥。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CR::VpcEndpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CR::VpcEndpoint",
+    "Description": "VPC 访问入口。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DNS::BackupSchedule",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::DNS::BackupSchedule",
+    "Description": "域名备份计划配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Etl",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Etl",
+    "Description": "数据加工任务用于对日志服务中的日志数据进行清洗、转换、分发等加工处理，将源日志主题中的数据加工后输出到目标日志主题。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudMonitor::EventRule",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudMonitor::EventRule",
+    "Description": "事件规则的详细信息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Kafka::Group",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Kafka::Group",
+    "Description": "Group 的基本信息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::GTM::Policy",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::GTM::Policy",
+    "Description": "GTM 实例下的调度策略配置，以 GtmId 和 PolicyType 标识一份策略，并通过 UpdatePolicy 维护策略内容。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::HostGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::HostGroup",
+    "Description": "日志服务中的机器组，用于管理一组日志采集机器。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Host",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Host",
+    "Description": "日志服务中的主机，用于管理日志采集的服务器节点。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketRename",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketRename",
+    "Description": "存储桶 RenameObject 功能配置。开启后可调用 RenameObject 接口重命名对象；该功能与版本控制互斥。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketMirrorBack",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketMirrorBack",
+    "Description": "为指定 TOS 存储桶配置回源规则。当对象请求命中指定条件时，TOS 可按规则从公网源站或私有源站回源拉取对象。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMsSQL::Backup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMsSQL::Backup",
+    "Description": "备份列表。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateLink::GatewayEndpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::PrivateLink::GatewayEndpoint",
+    "Description": "网关终端节点。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::AllowedIpAddress",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::AllowedIpAddress",
+    "Description": "IP 白名单配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DNS::Backup",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::DNS::Backup",
+    "Description": "备份信息",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::StorageEBS::SnapshotPolicy",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::StorageEBS::SnapshotPolicy",
+    "Description": "自动快照策略",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::InstanceSSL",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::InstanceSSL",
+    "Description": "实例 SSL 配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::TransitRouterRouteTableAssociation",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::TransitRouterRouteTableAssociation",
+    "Description": "中转路由器路由表的关联转发关系。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::DirectConnectGatewayAttachment",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::DirectConnectGatewayAttachment",
+    "Description": "专线网关类型网络实例连接资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::TransitRouterBandwidthPackage",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::TransitRouterBandwidthPackage",
+    "Description": "中转路由器带宽包资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::MongoDB::Endpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::MongoDB::Endpoint",
+    "Description": "连接地址信息列表。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::GTM::GTM",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::GTM::GTM",
+    "Description": "GTM 实例是云调度 GTM 中用于承载调度域名、调度策略与健康检查配置的核心资源。创建 GTM 实例后，您可以基于该实例为业务域名配置全局流量调度、故障切换与健康检查能力。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::GTM::Routing",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::GTM::Routing",
+    "Description": "用来启动或者停止 GTM 实例。启动后，GTM 实例会配置调度域名的 DNS 解析并启动健康检查和故障转移。停止后，GTM 实例的健康检查和故障转移也会停止。但是，从调度域名到目标地址的 DNS 解析并不会停止。如果您需要删除从调度域名到目标地址的 DNS 解析，你可以调用 DeleteGtm API 删除 GTM 实例。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::GTM::Rule",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::GTM::Rule",
+    "Description": "GTM 路由规则资源，定义特定线路下地址池集合、健康检查和生效策略。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DNS::Record",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::DNS::Record",
+    "Description": "DNS 解析记录资源，用于在指定域名下创建、查询、更新、删除和列出单条解析记录。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketAccessMonitor",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketAccessMonitor",
+    "Description": "此接口用于为存储桶设置访问跟踪功能。创建最后访问时间的生命周期规则前，必须先开启访问跟踪功能。开启该功能后，TOS 将自动开始检查并记录该存储桶下所有对象的最后访问时间。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VMP::RuleFile",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VMP::RuleFile",
+    "Description": "规则文件。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Kafka::User",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Kafka::User",
+    "Description": "SASL 用户详情。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEPFS::Fileset",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEPFS::Fileset",
+    "Description": "Fileset 详细信息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::EndpointPublicAddress",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::EndpointPublicAddress",
+    "Description": "实例连接终端公网地址。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::MongoDB::Account",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::MongoDB::Account",
+    "Description": "MongoDB 实例数据库账号。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DirectConnect::BgpPeer",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::DirectConnect::BgpPeer",
+    "Description": "BGP邻居",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::OauthProvider",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::OauthProvider",
+    "Description": "OAuth 身份提供商资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::RouteTablePropagation",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::RouteTablePropagation",
+    "Description": "符合条件的路由学习的详细信息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::CheckLogTopic",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::CheckLogTopic",
+    "Description": "健康检查日志主题与CLB实例的绑定关系。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::CheckLogProject",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::CheckLogProject",
+    "Description": "CLB提供健康检查日志能力，创建一个日志主题来存储、管理CLB的健康检查日志。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudMonitor::ContactGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudMonitor::ContactGroup",
+    "Description": "符合条件的联系组的详细信息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ID::Service",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ID::Service",
+    "Description": "ID 权限网关服务用于定义后端服务接入配置、权限空间绑定和可选的路由规则，供智能体身份和权限管理平台统一管理服务访问。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::ParameterTemplate",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::ParameterTemplate",
+    "Description": "火山引擎云数据库 PostgreSQL 版参数模板，用于管理和批量应用 PostgreSQL 实例参数配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::GTM::Pool",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::GTM::Pool",
+    "Description": "GTM 地址池资源，归属于某个 GTM 实例，用于承载目标地址集合和路由容量配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DirectConnect::VirtualInterface",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::DirectConnect::VirtualInterface",
+    "Description": "虚拟接口基于物理专线之上，是本地数据中心（IDC）通过物理专线与云上不同私有网络互通的逻辑接口，支持静态路由和BGP路由两种路由方式，本操作中使用BGP路由。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::KMS::Secret",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::KMS::Secret",
+    "Description": "凭据管理是基于密钥管理系统的凭据管理产品，用于存储用户业务应用中需要使用的 AK/SK、账号口令、访问密钥、数据库密码、证书等敏感凭据信息。产品提供安全存储、访问控制、自动轮换和审计能力，用户业务应用可通过集成 KMS SDK 或使用 KMS OpenAPI 向其安全、动态地获取凭据信息，有效避免明文存储敏感信息导致的信息泄露或非预期修改等风险。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPN::VpnGatewayRoute",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPN::VpnGatewayRoute",
+    "Description": "为VPN网关添加一条目的路由条目。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DirectConnect::DirectConnectGatewayRoute",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::DirectConnect::DirectConnectGatewayRoute",
+    "Description": "为专线网关添加静态路由。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPN::SslVpnServer",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPN::SslVpnServer",
+    "Description": "SSL服务端在SSL VPN中是用于提供SSL服务的服务模块，实现数据包的封装与解封装。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Alarm",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Alarm",
+    "Description": "告警策略，日志服务将定期分析数据，并定期将符合触发条件的告警发送给指定的通知对象。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateZone::PrivateZone",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::PrivateZone::PrivateZone",
+    "Description": "私网解析。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::Backup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::Backup",
+    "Description": "RDS PostgreSQL 备份资源，支持物理备份和逻辑备份。物理备份可创建和查询，逻辑备份可创建、删除、下载和查询。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Redis::ParameterGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Redis::ParameterGroup",
+    "Description": "火山引擎云数据库 Redis 版参数组，用于管理和批量应用 Redis 实例参数配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::ParameterTemplate",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::ParameterTemplate",
+    "Description": "火山引擎云数据库 MySQL 版参数模板，用于管理和批量应用 MySQL 实例参数配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketRealtimeLog",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketRealtimeLog",
+    "Description": "日志分析功能。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketCors",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketCors",
+    "Description": "存储桶（Bucket）设置跨域资源共享 CORS（Cross-Origin Resource Sharing）规则。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketNotification",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketNotification",
+    "Description": "设置事件通知规则。通过事件通知功能，您可以在存储桶内的资源发生变更时，获得事件通知。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CR::EndpointAclPolicy",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CR::EndpointAclPolicy",
+    "Description": "为公网访问添加访问地址白名单可以有效的提升信息安全。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::PeerAttachment",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::PeerAttachment",
+    "Description": "2个不同地域的TR实例之间建立的连接，能够实现跨地域互通。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPN::SslVpnClientCert",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPN::SslVpnClientCert",
+    "Description": "SSL客户端证书为SSL服务端的子资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Organization::ServiceControlPolicy",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::Organization::ServiceControlPolicy",
+    "Description": "管控策略。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RabbitMQ::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RabbitMQ::AllowList",
+    "Description": "rabbitmq访问白名单。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CEN::InterRegionBandwidth",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CEN::InterRegionBandwidth",
+    "Description": "CEN域间带宽，用于为云企业网实例分配跨地域互通的带宽。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Rule",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Rule",
+    "Description": "日志服务提供日志采集工具 LogCollector、多语言 SDK 等日志采集方式，兼容 Kafka 协议、OpenTelemetry 协议等多种开源协议框架，支持主机应用、K8s 集群、移动客户端、火山引擎云产品、其他云厂商等多种来源的日志类数据采集。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CEN::ServiceRouteEntry",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CEN::ServiceRouteEntry",
+    "Description": "云服务访问。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::MongoDB::SSLState",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::MongoDB::SSLState",
+    "Description": "MongoDB 实例的 SSL 加密设置，包括功能是否已开通、SSL 证书到期时间等信息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEPFS::MountService",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEPFS::MountService",
+    "Description": "挂载服务是文件系统在网络环境中的连接点。文件系统需要挂载在计算节点中才能完成数据的访问与存储。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VKE::Kubeconfig",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VKE::Kubeconfig",
+    "Description": "集群管理Kubeconfig。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::StorageEBS::SnapshotGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::StorageEBS::SnapshotGroup",
+    "Description": "快照一致性组是多个云盘快照的组合。在业务系统跨多块云盘的场景下，您可以通过快照一致性组，保证数据写入云盘的时序一致性，并保证其崩溃一致性。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEFAAS::Release",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEFAAS::Release",
+    "Description": "发布函数。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CEN::RouteEntry",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CEN::RouteEntry",
+    "Description": "云企业网路由条目，用于将网络实例的路由条目发布到云企业网。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Redis::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Redis::AllowList",
+    "Description": "缓存数据库 Redis 版实例创建成功后，您可以为实例设置白名单，以允许设备访问该实例。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::AlarmNotifyGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::AlarmNotifyGroup",
+    "Description": "日志服务通知组是告警通知渠道的集合，用于指定触发告警后的行动策略。您可以添加通知规则，日志服务会根据通知规则为告警智能分配不同的告警通知渠道。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketEncryption",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketEncryption",
+    "Description": "存储桶设置服务端加密。在存储桶设置服务端加密后，在该存储桶上传文件时，如果您没有指定文件的服务端加密方式，文件会默认继承存储桶的服务端加密方式。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketInventory",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketInventory",
+    "Description": "桶清单规则。创建桶清单后，TOS 将按天或周输出对象的各类信息，包括对象的数量、大小、存储类型等。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Shipper",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Shipper",
+    "Description": "日志投递指将日志服务采集的数据投递到 TOS 等其他产品中，用于长期存储低频访问数据、对接其他系统消费、分析数据等场景。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateLink::VpcEndpointConnection",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::PrivateLink::VpcEndpointConnection",
+    "Description": "终端节点与终端节点服务之间建立的单向、私密的网络连接。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::ConsumerGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::ConsumerGroup",
+    "Description": "多个消费者组成的虚拟集合。以消费组维度消费日志数据时，消费组中的所有消费者订阅同一个日志主题，共同消费一个日志主题中的数据。每个消费者消费日志主题中一个或多个 Shard 的数据，各个消费者间不会重复消费数据。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::ImportTask",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::ImportTask",
+    "Description": "日志服务支持数据导入功能，支持将 TOS、Kafka 等数据源 中存储的数据进行结构化，并保存在日志服务中。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateLink::VpcEndpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::PrivateLink::VpcEndpoint",
+    "Description": "终端节点是一个私网服务接入点，由服务使用方部署在己方VPC 内，用于私网访问服务提供方的服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEDBM::Endpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEDBM::Endpoint",
+    "Description": "数据库连接终端管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VMP::AlertingRule",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VMP::AlertingRule",
+    "Description": "VMP告警规则配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CEN::BandwidthPackage",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CEN::BandwidthPackage",
+    "Description": "为云企业网实例提供跨地域互通带宽，可以分配给不同的域间带宽。通过创建带宽包并分配域间带宽，可以实现不同地域中网络实例之间的互通。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEFAAS::Timer",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEFAAS::Timer",
+    "Description": "触发器管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::OidcProvider",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::OidcProvider",
+    "Description": "OIDC 身份提供商是负责收集并存储用户名、密码等用户身份数据的用户身份认证服务商，在访问控制（IAM）中是一个包含外部身份提供商元数据的实体，提供身份管理服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::SamlProvider",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::SamlProvider",
+    "Description": "SAML 身份提供商是负责收集并存储用户名、密码等用户身份数据的用户身份认证服务商，在访问控制（IAM）中是一个包含外部身份提供商元数据的实体，提供身份管理服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEDBM::Account",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEDBM::Account",
+    "Description": "数据库账号管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPN::VPNConnection",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPN::VPNConnection",
+    "Description": "IPsec连接是基于Internet，在VPN网关与用户网关之间建立起IPsec VPN通信隧道，基于IKE和IPsec协议对传输数据进行加密，确保数据通过隧道进行安全传输。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CEN::GrantInstance",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CEN::GrantInstance",
+    "Description": "将本账号的网络实例授权给指定账号的云企业网实例。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateZone::UserVPCAuthorization",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::PrivateZone::UserVPCAuthorization",
+    "Description": "账号授权管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::EMR::NodeGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::EMR::NodeGroup",
+    "Description": "E-MapReduce集群由多个不同类型的实例节点组成，包括主实例节点（Master）、核心实例节点（Core）和计算实例节点（Task）。不同实例节点上部署的服务进程不同，负责完成的任务也不同。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMsSQL::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMsSQL::AllowList",
+    "Description": "API请求参数 - 创建RDS SQL Server白名单（CreateAllowList）。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::LaunchTemplateVersion",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::LaunchTemplateVersion",
+    "Description": "实例启动模板版本是一系列实例配置信息的集合，用于快速购买实例。在模板中，您可以存储除密码外的全部配置信息，包括密钥对、计算规格、云盘、网络等，如果配置信息均有效，便可以一键成功购买实例，无需进行重复配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::LaunchTemplate",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::LaunchTemplate",
+    "Description": "实例启动模板是一系列实例配置信息的集合，用于快速购买实例。在模板中，您可以存储除密码外的全部配置信息，包括密钥对、计算规格、云盘、网络等，如果配置信息均有效，便可以一键成功购买实例，无需进行重复配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEDBM::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEDBM::AllowList",
+    "Description": "vedbm访问白名单。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Organization::Organization",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::Organization::Organization",
+    "Description": "企业组织管理",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEDBM::Database",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEDBM::Database",
+    "Description": "云数据库管理",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Index",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Index",
+    "Description": "日志服务支持日志检索与分析功能，配置索引后才能进行日志检索和分析操作。配置索引时需要指定索引的类型和各个字段的数据类型，索引的配置决定了检索方式和检索结果的精度。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::AutoScaling::ScalingLifecycleHook",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::AutoScaling::ScalingLifecycleHook",
+    "Description": "伸缩组触发伸缩规则、健康检查、实例数量检查后，生命周期挂钩可以将“加入中”、“移出中”、“停用中”实例的状态挂起，进入 加入/移出挂起中 状态，此时实例处于等待状态，您可以在这段时间内进行自定义操作，直至生命周期挂钩超时或您手动结束挂起。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::ScheduleSqlTask",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::ScheduleSqlTask",
+    "Description": "定时 SQL 分析任务的资源定义。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::EMR::ClusterUserGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::EMR::ClusterUserGroup",
+    "Description": " E-MapReduce（EMR）集群中支持对用户进行组管理，允许您创建、编辑和删除用户组。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::EMR::ClusterUser",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::EMR::ClusterUser",
+    "Description": "E-MapReduce（EMR）集群中的用户分为普通用户和系统用户两类。其中:普通用户是您在用户管理模块手动通过导入、创建操作向集群中添加的用户；系统用户则是集群在初始化过程中为每个组件内置的管理用户，不支持编辑和删除操作。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEDBM::Backup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEDBM::Backup",
+    "Description": "云数据库 veDB备份管理",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CDN::Domain",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CDN::Domain",
+    "Description": "加速域名是您希望加速内容传输的域名。当您将域名添加到内容分发网络中后，该域名在内容分发网络中就成了一个加速域名。内容分发网络会为该域名分配一个 CNAME。在您创建一条 DNS 记录将您的域名解析到该 CNAME 后，用户向您域名发送的请求就会被路由到您的加速域名，实现内容传输的加速。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::Schema",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::Schema",
+    "Description": "RDS PostgreSQL Schema 资源类型",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::MongoDB::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::MongoDB::AllowList",
+    "Description": "文档数据库 MongoDB 版实例创建成功后，您可以为实例设置白名单，以允许外部设备访问该实例。本文介绍如何通过控制台设置白名单。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::Database",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::Database",
+    "Description": "数据库是 PostgreSQL 实例中的一个独立数据库，用于存储和管理数据。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::Rule",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::Rule",
+    "Description": "ALB 按照您设置的转发规则，对不同特征的访问流量进行分发。您可以为一个监听器配置多条转发规则。基础版 ALB 实例支持基于域名和路径的转发规则。标准版 ALB 实例支持基于域名、路径和 HTTP 标头的转发规则，并支持复合转发条件。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RocketMQ::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RocketMQ::AllowList",
+    "Description": "RocketMQ访问白名单。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Kafka::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Kafka::AllowList",
+    "Description": "创建 Kafka 实例时，可以按需为其绑定白名单，绑定白名单与 Kafka 实例之后，仅配置在白名单中的 IP 地址与地址段才能访问消息队列 Kafka版实例。安全起见，建议您创建白名单，并将客户端的 IP 地址或 IP 地址段添加到 Kafka 实例的白名单中。建议您定期维护和管理白名单，提高 Kafka 实例访问的安全性。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Project",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Project",
+    "Description": "日志项目是数据的项目管理单元，用于租户资源隔离和控制，通常一个日志项目对应一个应用、业务或产品。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudIdentity::PermissionSetProvisioning",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudIdentity::PermissionSetProvisioning",
+    "Description": "给指定的账号部署权限集。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudIdentity::PermissionSetAssignment",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudIdentity::PermissionSetAssignment",
+    "Description": "当您创建好云身份中心用户后，需要授予用户访问到各账号的登录访问权限。\n当用户访问火山引擎云资源的权限访问具备可抽象的共性时，如：网络运维权限、安全管理权限等，您可以在云身份中心预置访问权限集作为权限模版，最终基于访问权限集来实现中心化授权。云身份中心将会为您同步分发访问权限集到各个账号，减少企业权限的运维成本。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudIdentity::UserProvisioning",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudIdentity::UserProvisioning",
+    "Description": "当您创建好云身份中心用户后，需要授予用户访问到各账号的登录访问权限。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::DBAccount",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::DBAccount",
+    "Description": "RDS PostgreSQL 数据库账号",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudIdentity::Group",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudIdentity::Group",
+    "Description": "当您需要批量为云身份中心用户进行SSO授权时，您可以先通过用户组进行批量的用户管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::FileNAS::MountPoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::FileNAS::MountPoint",
+    "Description": "挂载点是 NAS 文件系统在网络环境中的连接点。NAS 文件系统需要挂载在计算节点中才能完成数据的访问与存储。挂载是将计算节点与 NAS 文件系统相连接的操作。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudIdentity::PermissionSet",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudIdentity::PermissionSet",
+    "Description": "当您创建好云身份中心用户后，需要授予用户访问到各账号的登录访问权限。当用户访问火山引擎云资源的权限访问具备可抽象的共性时，如：网络运维权限、安全管理权限等，您可以在云身份中心预置访问权限集作为权限模版，最终基于访问权限集来实现中心化授权。云身份中心将会为您同步分发访问权限集到各个账号，减少企业权限的运维成本。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::NLBSecurityPolicy",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::NLBSecurityPolicy",
+    "Description": "基于一些常见的场景，为您预置了一些安全策略，若系统预置的策略不满足您的需求，您还可以自定义安全策略。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::EFS::FileSystem",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::EFS::FileSystem",
+    "Description": "文件系统是一种通过目录树结构管理文件的存储系统，分为本地文件系统和远程文件系统，此处特指远程文件系统，支持多个计算节点并发访问，共享数据集。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::Backup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::Backup",
+    "Description": "备份是数据库的重要运行时文件，基于备份文件，数据库能够实现容灾、恢复等功能。云数据库 MySQL 版提供了数据备份和日志备份两种备份能力：通过数据备份可将数据库恢复至某个备份集，通过日志备份可将数据库恢复至指定时间点。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPN::CustomerGateway",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPN::CustomerGateway",
+    "Description": "用户网关是您本地网关侧的信息集合和抽象。通过用户网关，您可以把本地网关的信息注册到云上VPC之中。一个用户网关，可以对接多个VPN网关。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::VpcAttachment",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::VpcAttachment",
+    "Description": "通过在私有网络和中转路由器之间建立连接，可以实现私有网络与中转路由器的私网互通。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::VpnAttachment",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::VpnAttachment",
+    "Description": "通过在VPN连接的IPsec连接和中转路由器之间建立连接，可以实现VPN连通的网络与中转路由器的私网互通。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateZone::Record",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::PrivateZone::Record",
+    "Description": "解析记录是域名与 VPC 内资源信息的映射。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::Ipv6AddressBandwidth",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::Ipv6AddressBandwidth",
+    "Description": "IPv6公网流量的带宽，决定IPv6地址的公网通信能力。IPv6地址若未开通IPv6公网带宽，则仅支持私网互通，您可以按需为IPv6地址开通IPv6公网带宽，使该IPv6地址具备与公网互通的能力。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::KMS::KeyRing",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::KMS::KeyRing",
+    "Description": "用户管理密钥的集合，用户将相同类型或用途的密钥放在同一密钥环中以便于管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RabbitMQ::InstancePlugin",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RabbitMQ::InstancePlugin",
+    "Description": "在消息队列 RabbitMQ版控制台中创建实例之后，实例插件默认为关闭状态，您可以手动为实例开启/关闭插件。开启/关闭部分插件会导致集群滚动重启，建议避开业务运行时段执行该操作。集群滚动重启时会造成未持久化的消息丢失，也会出现短暂的连接不稳定现象，例如连接断开，断开后会根据客户端配置决定是否自动重连。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::HealthCheckTemplate",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::HealthCheckTemplate",
+    "Description": "健康检查是确保应用程序是否可用的关键功能。ALB 通过定期对后端服务器进行健康检查，来验证这些服务器是否可以接受新的请求。当一个后端服务器不能正常响应 ALB 的健康检查请求时，来自客户端的流量不会被路由到该服务器。ALB 会将流量转发至其他状态为正常的服务器上。从而保证了服务的连续性和可靠性。ALB 健康检查是基于服务器组进行的。服务器组启用健康检查后，ALB 定期检查服务器组内的后端服务器状态。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RabbitMQ::PublicAddress",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RabbitMQ::PublicAddress",
+    "Description": "消息队列 RabbitMQ版支持开启公网访问，开启后，您可以通过公网访问 RabbitMQ 实例。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::DBEndpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::DBEndpoint",
+    "Description": "连接终端是位于数据库和应用程序之间的网络代理服务，用于代理应用程序访问数据库时的所有请求，具有高可用、高性能、可运维、简单易用等特点，支持读写分离和负载均衡等高级功能。云数据库 PostgreSQL 版提供了默认终端和自定义只读终端两种类型。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::AllowList",
+    "Description": "白名单是数据库连接的安全防控手段，只有白名单内的 IP 地址才能访问数据库。PostgreSQL 实例在创建后，不会绑定任何白名单，默认禁止所有 IP 地址访问实例。因此无论是通过私网还是通过公网连接访问实例，都需要先为实例配置白名单，才能保证实例可连接。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::AllowList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::AllowList",
+    "Description": "白名单是数据库连接的安全防控手段，只有白名单内的 IP 地址才能访问数据库。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::Endpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::Endpoint",
+    "Description": "连接终端是云数据库 MySQL 版提供的位于数据库和应用程序之间的网络代理服务。根据连接终端的功能差异，连接终端可以分为代理终端和直连终端两种类型。通过代理终端的连接将经过代理，可使用代理相关的特性和功能，如读写分离、负载均衡、空闲连接回收和 Multi-Statements 等；通过直连终端的连接将直连到对应节点，不能使用代理相关特性。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VKE::DefaultNodePool",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VKE::DefaultNodePool",
+    "Description": "除标准的自定义节点池外，容器服务支持 默认节点池（固定名称vke-default-nodepool）能力，用来纳管已有云服务器（ECS）实例。默认节点池的安全配置、高级配置、更多配置等配置能力与标准节点池一致，但不具备扩缩容、编辑数量等能力。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Redis::EndpointPublicAddress",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Redis::EndpointPublicAddress",
+    "Description": "开启公网访问，以便 VPC 外的设备来访问 Redis 实例。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Redis::Account",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Redis::Account",
+    "Description": "缓存数据库 Redis 版支持创建多个账号，您可以在创建账号时选择不同的角色，不同的角色支持的权限不同，帮助您实现数据库的精细化管理，提升数据安全性。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VKE::Node",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VKE::Node",
+    "Description": "对应 Kubernetes 中的 Node，是容器服务集群组成的基本元素。节点主要包括：Master 节点（控制节点）和 Worker 节点（计算节点/工作节点）。应用实际部署在 Worker 节点上，支持通过配置随机部署在 Worker 节点上或部署在指定的 Worker 节点上。容器服务中的 节点 一般指 Worker 节点。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::Ipv6Gateway",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::Ipv6Gateway",
+    "Description": "IPv6网关服务的运行载体，创建IPv6网关实例是进行IPv6公网配置的前提。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::FlowLog",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::FlowLog",
+    "Description": "流日志对网卡出入流量的日志数据按需聚合处理后，投递至 日志服务 存储和检索分析，您可以根据流日志的分析监控网络流量、排查网络问题、优化网络架构。VPC流日志记录VPC网络流量的详细信息，用于网络监控、流量分析和故障排查。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::TrafficMirrorTarget",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::TrafficMirrorTarget",
+    "Description": "镜像目的是收集流量的网卡或传统型负载均衡。您可以通过流量镜像，按自己设定的筛选条件复制网卡的流量，并将复制的流量私网转发到目标服务进行监控分析。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::TrafficMirrorFilter",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::TrafficMirrorFilter",
+    "Description": "通过流量镜像，您可以按自己设定的筛选条件复制网卡的流量，并将复制的流量私网转发到目标服务进行监控分析。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::TrafficMirrorSession",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::TrafficMirrorSession",
+    "Description": "镜像会话关联镜像源、镜像目的、筛选条件，使从镜像源复制的流量私网转发到镜像目的，是流量镜像的载体。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RocketMQ::Topic",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RocketMQ::Topic",
+    "Description": "在RocketMQ 实例中，Topic 是消息发送与接收的基本单元，消息队列 RocketMQ版通过 Topic 对各类消息进行分类管理。消息的生产者将消息发送到 RocketMQ Topic 中，而消息的消费者则通过订阅该 RocketMQ Topic 来消费消息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::DeploymentSet",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::DeploymentSet",
+    "Description": "部署集是在底层硬件维度上控制实例分散部署的策略，可以实现物理层级的安全隔离。您可以通过创建部署集，使实例分散部署在不同的底层硬件上，用于保障业务的底层容灾能力及高可用性。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RocketMQ::Group",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RocketMQ::Group",
+    "Description": "Group 即消费组（Consumer Group），是一类具有相同消费行为的消费者集合，用于分类管理不同的消费者。每个消费组消费不同种类的消息，且消息发布或订阅的逻辑一致。在消息队列 RocketMQ版中，您需要创建 Group，并通过 Group ID 标识不同类别的生产者或消费者。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::HAVIP",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::HAVIP",
+    "Description": "高可用虚拟IP是一种可独立持有，可根据实际业务需要随时创建或删除的私网IP资源。在主备集群场景下，高可用虚拟IP通常与高可用软件（如Keepalived、Window Server Failover Cluster）搭配使用，搭建高可用主备服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::CustomizedCfg",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::CustomizedCfg",
+    "Description": "ALB 提供监听维度的个性化配置功能。通过控制台可以创建并管理常规的 NGINX 配置策略，在监听器详情页一键关联配置策略，无需提交工单即可完成满足业务需求的个性化配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::TrafficMirrorFilterRule",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::TrafficMirrorFilterRule",
+    "Description": "筛选条件由筛选规则组成，分为入向筛选规则和出向筛选规则。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::FileNAS::Snapshot",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::FileNAS::Snapshot",
+    "Description": "快照是一种备份方式，每个快照都是文件存储在某个时间点的备份。当数据丢失或故障时，您可以通过快照恢复文件存储数据，找回丢失的数据。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPN::VPNGateway",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPN::VPNGateway",
+    "Description": "当您需要通过VPN连接实现私有网络与本地数据中心或其他私有网络之间的通信，您需要先创建一个VPN网关。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::BMQ::Group",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::BMQ::Group",
+    "Description": "一组具有相同 Group ID 的消费端。当一个 Topic 被同一个 Group 的多个 Consumer 消费时，每一条消息都只会被投递到一个 Consumer，实现消费的负载均衡。通过 Group，您可以确保一个 Topic 的消息被并行消费。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::FWCenter::DnsControlPolicy",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::FWCenter::DnsControlPolicy",
+    "Description": "域名黑名单访问控制策略。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudMonitor::Rule",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudMonitor::Rule",
+    "Description": "如果您需要监控某一云产品资源的数据状态，则可以创建云监控告警策略。当被监控的云产品资源数据达到告警的触发条件时，系统会通过您指定的方式推送告警通知，便于您及时发现存在异常数据的资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::EMR::Cluster",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::EMR::Cluster",
+    "Description": "E-MapReduce（EMR）是开源 Hadoop 生态的企业级大数据分析系统，完全兼容开源，为您提供 Hadoop、Spark、Hive、Hudi、Iceberg 等生态组件集成和管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMsSQL::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMsSQL::Instance",
+    "Description": "云数据库 SQL Server 版是基于世界一流的商用型数据库产品 Microsoft SQL Server 打造的一种稳定、可靠、可弹性伸缩的在线数据库服务。实例是使用云数据库 SQL Server 版的第一步",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::Project",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::Project",
+    "Description": "资源项目（Project）是提供的一种资源分组管理的机制，帮助您达成逻辑层面的资源隔离，您能够通过资源项目进行项目制授权和分账等操作。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DNS::Zone",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::DNS::Zone",
+    "Description": "资源里的zone就是域名，可以是主域名 例如 example.com，也可以是子域名 例如 abc.example.com",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CBR::Vault",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CBR::Vault",
+    "Description": "用于存放您的备份数据。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CBR::BackupPlan",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CBR::BackupPlan",
+    "Description": "当需要对备份源进行自动备份时，可以创建备份计划，在备份计划中关联备份源和备份策略，指定备份存储空间，并设置备份数据保留规则等。在创建备份计划后，系统将按照关联备份策略配置，对指定备份源进行统一自动备份。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CBR::BackupResource",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CBR::BackupResource",
+    "Description": "指备份对象，是云备份操作的起点。它可以是备份源产品中的计算资源、服务实例或者一组协同工作的服务和资源的集合，例如 ECS 整机、云盘、对象存储 Bucket。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::BMQ::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::BMQ::Instance",
+    "Description": "云原生消息引擎 100% 兼容 Apache Kafka 协议，基于云原生的全托管、高吞吐、低时延、高可用、高可扩展性、高稳定性的分布式消息引擎服务，支持灵活动态扩缩容和流批一体计算，提供企业级大数据量级的实时流数据处理能力，帮助您构建数据处理的“中枢神经系统”，广泛应用于日志收集、数据聚合、离线数据分析等业务场景。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateLink::EndpointService",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::PrivateLink::EndpointService",
+    "Description": "终端节点服务是可以与其他VPC通过终端节点建立私网连接的服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::StorageEBS::Snapshot",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::StorageEBS::Snapshot",
+    "Description": "快照是一种备份方式，每个快照都是云盘数据在某个时间点的备份文件。当数据丢失或故障时，您可以通过快照回滚云盘数据，找回丢失的数据。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CBR::BackupPolicy",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CBR::BackupPolicy",
+    "Description": "备份策略中定义了备份周期、备份类型等信息。后续通过备份计划关联备份策略与备份存储空间，实现自动备份。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CloudIdentity::User",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CloudIdentity::User",
+    "Description": "云身份中心用户，与企业员工身份一一映射。云身份中心用户是一种身份类型，可与某个账号下的IAM用户身份进行唯一关联并单点登录。云身份中心提供企业员工身份全生命周期管理、权限管理能力，推荐您在本产品内统一管理员工身份。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::APIG::Route",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::APIG::Route",
+    "Description": "通过创建路由功能，可将符合规则的请求，按照设置的流量权重分发至多个目标 Upstream，满足应用的多版本管理等场景。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::APIG::CustomDomain",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::APIG::CustomDomain",
+    "Description": "服务作为业务对外暴露的入口，可以通过绑定域名功能，将您的自定义域名绑定至服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::KMS::Key",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::KMS::Key",
+    "Description": "密钥管理服务（Key Management Service）是火山引擎上一站式的密钥管理和数据加密服务平台。提供简单易用的加密接口，KMS 帮助用户轻松管理密钥、保护云上核心数据的安全。同时极大降低用户自行部署密码基础设施的采购、研发成本。帮助业务轻松满足监管和合规需求。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::HBase::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::HBase::Instance",
+    "Description": "表格数据库 HBase 版是基于 Apache HBase 提供的全托管 NoSQL 服务，兼容标准 HBase 访问协议，具备低成本存储、高扩展吞吐等优势。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::MongoDB::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::MongoDB::Instance",
+    "Description": "文档数据库 MongoDB 版支持多种架构，能够满足业务灵活部署的需求。除副本集实例架构外，文档数据库 MongoDB 版还提供了分片集群架构，以满足海量数据业务场景，同时提供了灾备、备份及恢复、监控等全套解决方案；在互联网（游戏、电商、直播、资讯、社交）、新零售、在线教育、金融、物联网、政企等行业都有广泛的应用。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RocketMQ::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RocketMQ::Instance",
+    "Description": "消息队列 RocketMQ版是基于 Apache RocketMQ 构建的分布式消息中间件服务，完全兼容开源 RocketMQ 的各个组件与概念，同时具备低延迟、弹性高可靠、高吞吐等特性优势，业务代码无需改造，帮助用户快速迁移上云。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ESCloud::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ESCloud::Instance",
+    "Description": "云搜索服务（Cloud Search）是提供的全托管一站式信息检索和分析平台，兼容 Elasticsearch、OpenSearch、Kibana、Dashboards、Cerebro 以及常用的开源插件，可应用于全文搜索、向量搜索、混合搜索、AI 搜索、时空检索等场景。使用云搜索服务，您可以实现一键部署、弹性扩缩、简化运维，快速构建日志分析、信息检索分析等实际业务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::Instance",
+    "Description": "云数据库 MySQL 版是火山引擎基于开源数据库 MySQL 打造的弹性、可靠的在线关系型数据库服务。 MySQL 实例使用云原生方式部署，结合本地 SSD 存储类型，提供高性能读写能力；完全兼容 MySQL 引擎，并提供实例管理、备份恢复、日志管理、监控告警、数据迁移等全套解决方案，帮助企业简化繁杂的数据库管理和运维任务，使企业有更多的时间与资源聚焦于自己的核心业务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEPFS::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEPFS::Instance",
+    "Description": "文件存储 vePFS 是推出的一种高吞吐、低延时、可扩展并行的文件系统服务，满足高性能计算场景下高吞吐低延时的数据读写需求，可广泛应用于 HPC 高性能计算、AI 人工智能训练或推理、能源勘探、工业仿真、影视渲染、生命科学、气象分析等场景。同时，vePFS 提供一键化部署及配套监控报警能力，免去部署、维护费用的同时，最大化提升您的业务效率。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::APIG::Gateway",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::APIG::Gateway",
+    "Description": "API网关(Gateway)是API管理服务的核心组件，负责接收、处理、转发API请求，并提供安全认证、流量控制等功能。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VKE::NodePool",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VKE::NodePool",
+    "Description": "节点池是集群中具有相同配置的一组节点，一个节点池包含一个节点或多个节点。节点池的配置包含节点的属性，例如节点规格、可用区、标签、污点等。这些属性可以在创建节点池时指定，也可以在创建完成后进行编辑修改。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RabbitMQ::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RabbitMQ::Instance",
+    "Description": "消息队列 RabbitMQ版是一款支持 AMQP（Advanced Message Queuing Protocol） 协议的分布式高可用消息队列产品，完全兼容 RabbitMQ 开源生态及多语言客户端，提供丰富的消息特性和灵活的消息路由，同时具备分布式、高吞吐、低延迟、灵活扩展的云消息服务优势，无需用户部署运维，能够轻松实现快速上云。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VKE::Cluster",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VKE::Cluster",
+    "Description": "容器服务通过深度融合新一代云原生技术，提供以容器为核心的高性能 Kubernetes 容器集群管理服务。在云端一键构建高可用 Kubernetes 集群，并实现容器化应用的可视化全生命周期管理，助力用户快速构建容器化应用。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::AutoScaling::ScalingPolicy",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::AutoScaling::ScalingPolicy",
+    "Description": "伸缩规则用于定义触发扩缩容行为的条件和方式，包括规则类型、触发时间、伸缩行为、冷却时间等。在同一个伸缩组中，您可以启用多条伸缩规则，满足任意类型时均会执行伸缩动作。但当同一时间满足多个类型时，将优先执行手动触发的伸缩行为。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CEN::CEN",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CEN::CEN",
+    "Description": "云企业网（Cloud Enterprise Network，CEN）提供一种能够快速构建跨地域私有网络（VPC）与云下数据中心（IDC）之间高速、优质、稳定的网络能力，帮助您打造一张具有企业级规模和通信能力的全球云上网络。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::AutoScaling::ScalingGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::AutoScaling::ScalingGroup",
+    "Description": "伸缩组用于管理一组云资源实例。通过伸缩组可以定义云资源池中的实例数/容量、冷却时间、负载均衡等信息。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEDBM::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEDBM::Instance",
+    "Description": "云数据库 veDB MySQL 版是火山引擎自研新一代云原生关系型数据库。云数据库 veDB MySQL 版 100% 兼容 MySQL，适用于企业多样化的数据库应用场景。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::NatGateway::NatIp",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::NatGateway::NatIp",
+    "Description": "从私网NAT网关所属子网分配，用于IP地址转换。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::NatGateway::Dnatentry",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::NatGateway::Dnatentry",
+    "Description": "目的地址转换。即当中转IP及端口被访问时，私网NAT网关将访问请求中的目的地址和端口替换成云服务器的私网IP及端口后，进行转发。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::NatGateway::Snatentry",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::NatGateway::Snatentry",
+    "Description": "当私有网络内有多台云服务器实例需要访问公网时，为了节省公网IP且避免在公网上直接暴露云服务器IP，您可以使用公网NAT网关的SNAT规则，安全、便捷、高效地访问公网。SNAT规则支持私有网络、子网、云服务器、自定义网段等四种粒度，您可根据业务需求灵活配置。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Organization::Unit",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::Organization::Unit",
+    "Description": "企业组织的创建者管理员账号可以新建组织单元来搭建企业的组织结构，对账号进行分组织单元管理。组织单元可以分多个组织单元层级，管理员账号也可属于任意层级的任意组织单元节点。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::DBAccount",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::DBAccount",
+    "Description": "数据库账号",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CDN::ShareConfig",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::CDN::ShareConfig",
+    "Description": "全局配置扩展了域名的配置能力，具有以下优点：提升了黑白名单的容量。例如，IP 黑名单可以包含高达 30,000 个条目。提升了域名配置的效率。一个全局配置可与多个域名关联。提供了通用列表类型，可以在额外的域名配置中被使用。一个全局配置的修改可立刻应用于其关联的所有域名。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::NatGateway::NGW",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::NatGateway::NGW",
+    "Description": "NAT网关为私有网络内的云服务器提供网络地址转换服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VKE::Permission",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VKE::Permission",
+    "Description": "容器服务提供集群 RBAC 授权功能，为 IAM 用户或角色授予 RBAC 访问权限，包括可访问的资源、权限的作用范围、预置的角色类型等，从而更好地管理集群的安全访问控制，满足企业用户细粒度的资源访问权限控制需求。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateZone::ResolverEndpoint",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::PrivateZone::ResolverEndpoint",
+    "Description": "在把外部的 DNS 查询请求转发到解析器的场景中，您需要创建终端节点。收到解析器转发的 DNS 查询请求后，终端节点出站终端节点会把 DNS 查询请求转发到外部的 DNS 服务器。收到来自外部的 DNS 查询请求后，入站终端节点会把 DNS 查询请求转发到解析器。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::APIG::Upstream",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::APIG::Upstream",
+    "Description": "Upstream 是对 API 网关实例后端的抽象。您可以将具有相同功能的后端应用抽象为一个 Upstream，实现路由和后端应用解耦，更灵活地支持后端应用的灰度发布、多版本管理等场景。本文为您介绍 Upstream 的概念及作用。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Kafka::Topic",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Kafka::Topic",
+    "Description": "Topic即消息的主题，用于分类消息。支持 Topic 级别的资源管理，即 Topic 的创建、查看与删除等操作。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Organization::Account",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::Organization::Account",
+    "Description": "查看和管理您组织内的所有账号。每个账号可以直接放在根节点中，也可以移动到您创建的任意组织节点层级结构中，每个账号只能归属于一个节点。您可以分层树状结构管理您的组织结构以及成员账号。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::PrivateZone::ResolverRule",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::PrivateZone::ResolverRule",
+    "Description": "转发规则详细信息",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::APIG::GatewayService",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::APIG::GatewayService",
+    "Description": "服务是一组路由对外暴露的入口，用于区分流量的来源和协议，实现业务、环境、逻辑租户隔离。服务可以绑定独立的访问域名，以域名维度访问业务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEFAAS::Sandbox",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEFAAS::Sandbox",
+    "Description": "沙箱实例是云沙箱中实际执行沙箱镜像的安全且隔离的容器运行环境。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEFAAS::KafkaTrigger",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEFAAS::KafkaTrigger",
+    "Description": "函数服务支持对接消息队列 Kafka 版。通过创建 Kafka 触发器，函数服务将作为消费者消费 Kafka 中的消息，并将消息传递给用户函数，触发函数代码逻辑。您无需关心函数服务消费消息的细节，只需编写处理消息的函数。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::BucketPolicy",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::BucketPolicy",
+    "Description": "存储桶策略是针对单独存储桶及桶内资源设置的策略，您可以通过桶策略授予其他用户相应资源的权限。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::APIG::UpstreamSource",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::APIG::UpstreamSource",
+    "Description": "API 网关支持基于容器服务（VKE）集和容器服务的注册集群功能，将集群导入到 API 网关实例，将其作为网关的 Upstream 来源，以便网关获取集群中的 Service 列表。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TLS::Topic",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TLS::Topic",
+    "Description": "日志主题是日志服务进行日志管理的基本单位，日志接入、检索分析、消费等功能都是基于日志主题的粒度进行操作。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::NetworkAcl",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::NetworkAcl",
+    "Description": "网络ACL用于控制子网的出入流量，其基于白名单原理设计，出入子网的流量必须被网络ACL规则允许才能放通。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::TransitRouterRouteTable",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::TransitRouterRouteTable",
+    "Description": "中转路由器转发流量的依据，具有关联转发、静态路由、路由学习、路由同步等能力。每个TR实例下可以创建多个TR路由表，分别用于转发具有不同访问需求的网络实例的流量。多条网络实例连接可以关联同一个TR路由表。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::DirectConnect::DirectConnectGateway",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::DirectConnect::DirectConnectGateway",
+    "Description": "专线网关是本地数据中心访问云上的入口，用于连接私有网络（VPC）与物理专线，实现云下数据中心（IDC）和云上私有网络（VPC）互访。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CR::Registry",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CR::Registry",
+    "Description": "镜像仓库（Container Registry，CR）提供安全高可用的容器镜像、Helm Chart 等符合 OCI 标准的云原生制品托管服务，方便企业用户管理容器镜像和 Helm Chart 的全生命周期。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::WAF::Domain",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::WAF::Domain",
+    "Description": "通过 CNAME 或是负载均衡方式接入防护网站，并配置接入能力和回源能力，将业务流量接入到 WAF 实例，实现防护。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSPostgreSQL::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSPostgreSQL::Instance",
+    "Description": "云数据库实例管理",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VKE::Addon",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VKE::Addon",
+    "Description": "集群中支持安装多种类型的组件，包括 网络、存储、监控、DNS、安全、镜像、GPU 等，满足您多种业务场景需求。您可按需部署、升级或卸载组件。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::Instance",
+    "Description": "表示一个弹性计算服务（ECS）的实例资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::Listener",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::Listener",
+    "Description": "监听器负责根据指定的协议和端口，监听CLB实例接收到的用户访问请求。CLB将按照该监听器配置的调度算法，将访问请求转发至该后端服务器组内健康的后端服务器。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Redis::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Redis::Instance",
+    "Description": "缓存数据库 Redis 版的基本单位是实例。实例是独立的、虚拟化的数据库运行环境，是多个数据节点与代理节点的集合，数据节点上运行 Redis 引擎。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::ServerGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::ServerGroup",
+    "Description": "服务器组是后端服务器的逻辑集合。ALB 实例按照您配置的转发规则确定客户端请求将被转发到的服务器组。然后，ALB 实例根据您配置的负载均衡策略，将请求分发给服务器组内的后端服务器。后端服务器接收并处理请求。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::ACL",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::ACL",
+    "Description": "ALB提供监听级别的访问控制，如果您希望仅允许某些IP、或仅拒绝某些IP通过监听端口访问ALB实例，可以对该监听器设置访问控制策略。您可以在创建监听器时配置访问控制，也可以在监听器创建后修改或重新配置访问控制。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::PrefixList",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::PrefixList",
+    "Description": "前缀列表是一组CIDR地址块的集合，用于简化安全组规则、路由表条目的配置。当前缀列表修改时，所有关联它的资源均会同步修改。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::Listener",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::Listener",
+    "Description": "每个 ALB 实例至少要有一个监听器才能正常工作。监听器接收客户端请求，并根据您配置的转发规则和负载均衡算法将请求分发到后端服务器上。您可以在一个 ALB 实例下创建多个监听器，并为监听器配置不同的监听协议，以处理使用不同协议的客户端请求。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::AutoScaling::ScalingConfiguration",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::AutoScaling::ScalingConfiguration",
+    "Description": "用于定义伸缩组中的实例配置，包括计算、内存、网络、存储、安全等，伸缩组扩容时，会按照此处的配置来源创建新实例。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::ACL",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::ACL",
+    "Description": "CLB提供监听级别的访问控制，如果您希望仅允许某些IP、或仅拒绝某些IP通过监听端口访问CLB实例，可以对该监听器设置访问控制策略。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::Certificate",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::Certificate",
+    "Description": "针对HTTPS协议，提供统一的证书管理服务，证书无需上传到后端服务器，支持在CLB实例上解密处理，降低了后端服务器的CPU开销。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::Rule",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::Rule",
+    "Description": "转发规则用于将指定域名和URL的请求引流至指定的后端服务器组。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CR::NameSpace",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CR::NameSpace",
+    "Description": "命名空间是 OCI 制品仓库的集合，管理多个具有关联属性的 OCI 制品仓库。命名空间的名称通常为企业内部的组织团队名称、产品项目名称或个人自定义名称。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::TransitRouterRouteEntry",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::TransitRouterRouteEntry",
+    "Description": "通过为网络实例连接或跨地域连接关联的路由表创建或删除静态路由，能够灵活地控制中转路由器中的流量走向。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::RDSMySQL::Database",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::RDSMySQL::Database",
+    "Description": "数据库",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::LoadBalancer",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::LoadBalancer",
+    "Description": "应用型负载均衡（ALB）是对“七层”网络协议的流量进行分发的服务。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::Kafka::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::Kafka::Instance",
+    "Description": "消息队列 Kafka版是一款基于 Apache Kafka 构建的分布式消息中间件服务，具备高吞吐、高可扩展性等特性，提供流式数据的发布/订阅和多副本存储机制，广泛应用于日志压缩收集、流式数据处理、消息解耦、流量削峰去谷等应用场景。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::NLBServerGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::NLBServerGroup",
+    "Description": "服务器组是一组后端服务器。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::BandwidthPackage",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::BandwidthPackage",
+    "Description": "共享带宽包是一种支持复用和共享带宽的云资源。将单个地域内多个公网IP或IPv6公网带宽添加到一个共享带宽包实例中，共享一条带宽。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ALB::Certificate",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ALB::Certificate",
+    "Description": "ALB 支持上传服务器证书、CA 证书到控制台，对上传的证书单独管理。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::NLB",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::NLB",
+    "Description": "NLB 实例用于接收用户的访问请求，并根据监听器和服务器组的配置设定，将访问请求转发至后端服务器。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::ServerGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::ServerGroup",
+    "Description": "后端服务器组是一组后端服务器。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::NLBListener",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::NLBListener",
+    "Description": "监听器负责根据指定的协议和端口，监听NLB实例接收到的用户访问请求。NLB将按照该监听器关联的服务器组配置的调度算法，将访问请求转发至该服务器组内健康的后端服务器。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::StorageEBS::Volume",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::StorageEBS::Volume",
+    "Description": "云盘是高可用、高可靠、高性能、弹性扩展的块存储设备，可以作为云服务器和弹性容器服务的可扩展硬盘使用。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CR::Repository",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CR::Repository",
+    "Description": "OCI 制品仓库用于存储容器镜像或 Helm Chart 等，符合开源容器标准的 OCI（Open Container Initiative） 制品。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::Keypair",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::Keypair",
+    "Description": "ECS 密钥对（Keypair）默认采用 RSA 2048 位加密算法生成一对关联密钥，包含公钥（public key）和私钥（private key）。其中，公钥用于对数据进行加密处理，可将明文转换为不可直接读取的密文；私钥则作为解密的唯一凭证，能将密文还原为原始明文，实现安全的身份验证与数据传输。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::RouteTable",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::RouteTable",
+    "Description": "路由表由一系列路由条目组成，为私有网络的流量指定下一跳的云资源，每个子网必须且仅支持关联一个路由表，使子网内的资源通过路由表转发流量。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::CLB::CLB",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::CLB::CLB",
+    "Description": "负载均衡实例",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TransitRouter::TransitRouter",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TransitRouter::TransitRouter",
+    "Description": "中转路由器服务的运行载体。接受来自网络实例的流量，并根据关联转发路由表进行转发。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::EIP",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::EIP",
+    "Description": "公网IP（Elastic IP Address，EIP）及其公网出口带宽，是火山引擎为云资源提供的可独立购买和持有的IP连通服务。公网IP支持直接绑定云服务器（包括ECS云服务器、EBM裸金属服务器、GPU云服务器），还支持绑定公网NAT网关、负载均衡、辅助网卡等组件，为云服务器提供公网互通能力。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::Policy",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::Policy",
+    "Description": "策略是对权限的一种描述，IAM用户、用户组或角色均需通过关联策略来赋予权限。当系统预设策略不能满足要求时，您可以创建自定义策略，对权限进行细粒度的定义。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VMP::Workspace",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VMP::Workspace",
+    "Description": "工作区（Workspace）是 VMP 服务中采集数据和规则的抽象整合，为用户提供物理隔离或逻辑隔离的 Prometheus 能力。在 VMP 服务中可创建不同的工作区，不同工作区中的数据彼此隔离。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::Invocation",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::Invocation",
+    "Description": "云助手是火山引擎打造的原生自动化运维工具。您可以创建立即执行、周期执行、定时执行的作业任务，创建完成后完，云助手客户端将按照执行模式自动开始执行。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::ENI",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::ENI",
+    "Description": "网卡即虚拟网卡。在私有网络里，网卡是挂载在云服务器、负载均衡等云资源上的一种网络接口。每张网卡均有一个主私网IP地址。若有需要，可手动为其分配多个辅助私网IP地址。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ARK::Endpoint",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ARK::Endpoint",
+    "Description": "在使用大语言模型进行推理服务时，推理接入点（Endpoint）是模型调用的关键入口。开发者只需通过指定的 ID 即可向大模型发起 API / SDK 推理请求，实现快速接入与灵活调用。系统提供统一的 API 调用方式、调用监控、限流策略与安全保障机制，确保推理过程的稳定性与安全性。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::HpcCluster",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::HpcCluster",
+    "Description": "高性能计算集群（High Performance Compute Cluster，HPC集群）是一种用于处理大规模计算任务的集群计算环境，通常由大量的计算节点组成，这些节点通过RDMA（Remote Direct Memory Access）高速网络互联，并协同工作以处理复杂的计算任务。高性能计算集群可以提供强大的计算能力、大内存、高速存储和高速网络，以满足对计算密集型、数据密集型或两者结合的工作负载的需求。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::Command",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::Command",
+    "Description": "自定义命令是云助手提供的满足您个性化运维需求的功能，您可以在预置的公共命令不满足需求时创建自定义命令，并通过运维任务在实例中批量执行您编写的自定义命令。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VEFAAS::Function",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VEFAAS::Function",
+    "Description": "函数由函数代码和函数配置构成，是用于调度和运行函数代码的基础单元。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::FileNAS::Instance",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::FileNAS::Instance",
+    "Description": "文件系统通过标准的 NFS 协议为您提供文件存储服务，用于网络文件远程访问，通过管理控制台创建挂载地址后，即可按需在客户端中通过标准的 POSIX 接口对文件系统进行访问。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::Subnet",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::Subnet",
+    "Description": "子网是在指定可用区内分配的一段VPC网段内的网段，它为云上资源（如云服务器、负载均衡等）提供私网IP地址。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::Group",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::Group",
+    "Description": "用户组是用户的集合。当用户组被关联上策略后，同一用户组里的所有用户会拥有对应的策略权限，同一个用户可存在于多个用户组中，可同时拥有多个用户组的权限。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::SecurityGroup",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::SecurityGroup",
+    "Description": "安全组是一个逻辑意义上的分组，为同一个私有网络内具有相同安全保护需求并相互信任的网卡提供访问策略。您可以通过配置安全组规则，控制安全组关联网卡的出入流量。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::Accesskey",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::Accesskey",
+    "Description": "访问控制(Identity and Access Management，缩写为IAM)是火山引擎为客户提供的一套权限管理系统，用于控制不同身份对云资源的访问权限。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::User",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::User",
+    "Description": "IAM子用户是访问控制的一种身份，由账号或是拥有权限的用户创建。用户被授予权限后，可登录控制台或使用访问密钥调用API访问云资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::IAM::Role",
+    "Trn": "trn:cloudcontrol:::resource_type/Volcengine::IAM::Role",
+    "Description": "角色（Role）是IAM体系里的一种虚拟身份，用于将账号内某些访问权限授予给各类身份实体，受信任的身份实体可扮演该角色来访问账号内的云资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::VPC::VPC",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::VPC::VPC",
+    "Description": "私有网络为云上资源构建隔离的、自主配置的虚拟网络环境。可以在私有网络中自定义IP地址段、安全组、路由策略等网络特性，简单高效安全地管理云上资源。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::TOS::Bucket",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::TOS::Bucket",
+    "Description": "存储桶是存储对象（Object）的容器，所有的对象都必须隶属于某个存储桶。存储桶具有各种配置属性，包括地域、访问权限等。您可以根据实际需求，创建不同类型的存储桶来存储不同的数据。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  },
+  {
+    "TypeName": "Volcengine::ECS::Image",
+    "Trn": "trn:cloudcontrol:cn-beijing::resource_type/Volcengine::ECS::Image",
+    "Description": "镜像是包含了云服务器实例所需的基本操作系统、应用数据的特殊文件。创建实例时，必须选择镜像。",
+    "Visibility": "PUBLIC",
+    "PublisherName": "Volcengine"
+  }
+]

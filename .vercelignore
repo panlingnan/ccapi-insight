@@ -1,0 +1,8 @@
+# Local-only pipeline + dev server (not needed on Vercel; contain no secrets)
+server.py
+fetch_ccapi_resourcetypes.py
+build_coverage_data.py
+analyze_coverage.py
+__pycache__/
+*.pyc
+.DS_Store

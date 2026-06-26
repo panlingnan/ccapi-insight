@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CloudControl OpenAPI 覆盖率</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --panel: #ffffff;
+    --border: #e4e7ec;
+    --text: #1d2433;
+    --muted: #667085;
+    --brand: #2f6bff;
+    --brand-soft: #eaf0ff;
+    --ok: #0f9d58;
+    --ok-soft: #e6f6ec;
+    --miss: #d92d20;
+    --miss-soft: #fdeceb;
+    --shadow: 0 1px 3px rgba(16,24,40,.08), 0 1px 2px rgba(16,24,40,.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+      "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  header {
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  header h1 { margin: 0; font-size: 18px; font-weight: 650; }
+  header p { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+  .head-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .refresh {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--brand); color: #fff; border: 0;
+    padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; box-shadow: var(--shadow);
+  }
+  .refresh:hover { filter: brightness(.96); }
+  .refresh:disabled { opacity: .6; cursor: not-allowed; }
+  .refresh .ri { font-size: 15px; display: inline-block; }
+  .refresh.spin .ri { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  /* overlay */
+  .overlay {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: rgba(16,24,40,.45); align-items: center; justify-content: center;
+  }
+  .overlay.show { display: flex; }
+  .modal {
+    width: min(680px, 92vw); background: var(--panel);
+    border-radius: 14px; box-shadow: 0 20px 50px rgba(16,24,40,.25);
+    padding: 20px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .modal-head { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+  .modal-sub { color: var(--muted); font-size: 12px; margin-top: -6px; }
+  .spinner {
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 2px solid var(--brand-soft); border-top-color: var(--brand);
+    animation: spin .8s linear infinite; flex-shrink: 0;
+  }
+  .spinner.hidden { display: none; }
+  .loglines {
+    margin: 0; max-height: 46vh; overflow-y: auto;
+    background: #0f1729; color: #cdd6e4; border-radius: 10px;
+    padding: 12px 14px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px; line-height: 1.55; white-space: pre-wrap; word-break: break-word;
+  }
+  .loglines .lg-step { color: #7dd3fc; font-weight: 600; }
+  .loglines .lg-ok { color: #86efac; }
+  .loglines .lg-err { color: #fca5a5; }
+  .modal-foot { display: flex; justify-content: flex-end; }
+  .btn-ghost {
+    border: 1px solid var(--border); background: var(--panel); color: var(--text);
+    padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 13px;
+  }
+  .btn-ghost:disabled { opacity: .5; cursor: not-allowed; }
+  .layout { display: flex; min-height: calc(100vh - 65px); }
+  /* sidebar */
+  #sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 12px;
+    overflow-y: auto;
+    max-height: calc(100vh - 65px);
+    position: sticky;
+    top: 65px;
+  }
+  .search {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 10px;
+    outline: none;
+  }
+  .search:focus { border-color: var(--brand); }
+  .svc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 2px;
+  }
+  .svc:hover { background: var(--bg); }
+  .svc.active { background: var(--brand-soft); color: var(--brand); font-weight: 600; }
+  .svc .name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .svc .pct {
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+  .svc.active .pct { color: var(--brand); }
+  /* main */
+  main { flex: 1; padding: 20px 24px; overflow-x: hidden; min-width: 0; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
+  .stat {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    box-shadow: var(--shadow);
+    min-width: 110px;
+  }
+  .stat .k { font-size: 12px; color: var(--muted); }
+  .stat .v { font-size: 22px; font-weight: 680; font-variant-numeric: tabular-nums; }
+  .stat.ok .v { color: var(--ok); }
+  .stat.miss .v { color: var(--miss); }
+  .bar {
+    flex: 1;
+    min-width: 200px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--miss-soft);
+    overflow: hidden;
+    position: relative;
+  }
+  .bar > i {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #34c759, var(--ok));
+    border-radius: 999px;
+  }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 14px; }
+  .filter-input {
+    flex: 1; min-width: 200px;
+    padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13px; outline: none;
+  }
+  .filter-input:focus { border-color: var(--brand); }
+  .seg {
+    display: inline-flex; border: 1px solid var(--border);
+    border-radius: 8px; overflow: hidden; background: var(--panel);
+  }
+  .seg button {
+    border: 0; background: transparent; padding: 7px 14px; cursor: pointer;
+    font-size: 13px; color: var(--muted);
+  }
+  .seg button.active { background: var(--brand); color: #fff; }
+  .legend { display: flex; gap: 14px; font-size: 12px; color: var(--muted); margin-left: auto; }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+  .dot.ok { background: var(--ok); }
+  .dot.miss { background: var(--miss); }
+  /* groups */
+  .group { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; box-shadow: var(--shadow); overflow: hidden; }
+  .group > summary {
+    list-style: none; cursor: pointer; padding: 12px 16px;
+    display: flex; align-items: center; gap: 10px; font-weight: 600;
+    user-select: none;
+  }
+  .group > summary::-webkit-details-marker { display: none; }
+  .chev { transition: transform .15s; color: var(--muted); }
+  .group[open] .chev { transform: rotate(90deg); }
+  .group .gcount { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .gbadge { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  tbody tr { border-top: 1px solid var(--border); }
+  tbody tr:hover { background: var(--bg); }
+  td { padding: 9px 16px; vertical-align: top; word-break: break-word; }
+  td.status { width: 80px; }
+  td.action { width: 25%; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; word-break: break-all; }
+  td.cn { width: 22%; color: var(--muted); }
+  td.types { color: var(--muted); font-size: 12px; }
+  .pill { font-size: 11px; padding: 2px 9px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
+  .pill.ok { background: var(--ok-soft); color: var(--ok); }
+  .pill.miss { background: var(--miss-soft); color: var(--miss); }
+  .pill.ex { background: #f1f0f4; color: #98a2b3; }
+  .tname { display: inline-block; background: var(--brand-soft); color: var(--brand); border-radius: 6px; padding: 1px 7px; margin: 1px 3px 1px 0; font-size: 11px; }
+  td.toggle { width: 64px; text-align: right; }
+  td.drill { width: 84px; text-align: right; }
+  .drill-btn {
+    border: 1px solid var(--border); background: var(--panel); color: var(--brand);
+    border-radius: 7px; padding: 4px 9px; font-size: 12px; cursor: pointer;
+    white-space: nowrap; font-weight: 600;
+  }
+  .drill-btn:hover { border-color: var(--brand); background: var(--brand-soft); }
+  tr.row-ex td.action, tr.row-ex td.cn { text-decoration: line-through; opacity: .55; }
+  tr.row-ex td.types { opacity: .4; }
+  .switch { position: relative; display: inline-block; width: 38px; height: 22px; cursor: pointer; vertical-align: middle; }
+  .switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+  .switch .track {
+    position: absolute; inset: 0; border-radius: 999px; background: #cfd4dc;
+    transition: background .15s;
+  }
+  .switch .track::before {
+    content: ""; position: absolute; left: 3px; top: 3px; width: 16px; height: 16px;
+    border-radius: 50%; background: #fff; transition: transform .15s; box-shadow: 0 1px 2px rgba(16,24,40,.2);
+  }
+  .switch input:checked + .track { background: var(--ok); }
+  .switch input:checked + .track::before { transform: translateX(16px); }
+  .empty { color: var(--muted); padding: 40px; text-align: center; }
+  code.v { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1px 7px; font-size: 12px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  a.doc { color: var(--brand); text-decoration: none; font-size: 12px; }
+  a.doc:hover { text-decoration: underline; }
+  /* resource type chips */
+  .rtchips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .rtchip {
+    border: 1px solid var(--border); background: var(--panel); color: var(--text);
+    border-radius: 8px; padding: 5px 11px; font-size: 12px; cursor: pointer;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  .rtchip:hover { border-color: var(--brand); color: var(--brand); background: var(--brand-soft); }
+  /* drawer */
+  .drawer-scrim {
+    display: none; position: fixed; inset: 0; z-index: 90;
+    background: rgba(16,24,40,.35);
+  }
+  .drawer-scrim.show { display: block; }
+  .drawer {
+    position: fixed; top: 0; right: 0; height: 100vh; width: min(560px, 94vw);
+    background: var(--panel); z-index: 95; box-shadow: -8px 0 30px rgba(16,24,40,.18);
+    transform: translateX(100%); transition: transform .2s ease;
+    display: flex; flex-direction: column;
+  }
+  .drawer.show { transform: translateX(0); }
+  .drawer-head {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 12px; padding: 18px 20px 12px; border-bottom: 1px solid var(--border);
+    flex-shrink: 0; max-height: 38vh; overflow-y: auto;
+  }
+  .drawer-title { font-size: 16px; font-weight: 650; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .drawer-sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .drawer-close {
+    border: 0; background: transparent; font-size: 26px; line-height: 1;
+    color: var(--muted); cursor: pointer; padding: 0 4px;
+  }
+  .drawer-close:hover { color: var(--text); }
+  .drawer-tabs { display: flex; gap: 4px; padding: 10px 20px 0; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .drawer-tabs button {
+    border: 0; background: transparent; padding: 8px 12px; cursor: pointer;
+    font-size: 13px; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  .drawer-tabs button.active { color: var(--brand); border-bottom-color: var(--brand); font-weight: 600; }
+  .drawer-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; padding: 16px 20px; }
+  .handler-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+  .handler-card > .hc-head {
+    display: flex; align-items: center; gap: 8px; padding: 9px 14px;
+    background: var(--bg); font-weight: 600; font-size: 13px;
+  }
+  .hc-op { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .hc-tag { font-size: 11px; padding: 1px 8px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); }
+  .perm-list { padding: 8px 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .perm {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+    background: var(--ok-soft); color: var(--ok); border-radius: 6px; padding: 2px 8px;
+  }
+  .perm.dim { background: var(--bg); color: var(--muted); }
+  .json-view {
+    margin: 0; background: #0f1729; color: #cdd6e4; border-radius: 10px; padding: 14px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+    line-height: 1.55; white-space: pre; overflow-x: auto;
+  }
+  .drawer-loading { color: var(--muted); padding: 30px; text-align: center; }
+  /* param-match drawer */
+  .pm-stats { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .pm-stat {
+    flex: 1; min-width: 84px; border: 1px solid var(--border); border-radius: 10px;
+    padding: 10px 12px; background: var(--panel);
+  }
+  .pm-stat .k { font-size: 11px; color: var(--muted); }
+  .pm-stat .v { font-size: 20px; font-weight: 680; font-variant-numeric: tabular-nums; }
+  .pm-stat.ok .v { color: var(--ok); }
+  .pm-stat.miss .v { color: var(--miss); }
+  .pm-controls { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; flex-wrap: wrap; }
+  .pm-controls .filter-input { min-width: 140px; }
+  .pm-rt { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .pm-rt code.v { margin: 1px 3px 1px 0; display: inline-block; }
+  .pm-sec-title {
+    font-size: 13px; font-weight: 650; margin: 16px 0 8px; display: flex; align-items: center; gap: 8px;
+  }
+  .pm-sec-title .cnt { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .pm-list { display: flex; flex-direction: column; gap: 6px; }
+  .pm-row {
+    border: 1px solid var(--border); border-radius: 9px; padding: 8px 11px;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .pm-row.matched { border-left: 3px solid var(--ok); }
+  .pm-row.unmatched { border-left: 3px solid var(--miss); }
+  .pm-row.meta { border-left: 3px solid #cfd4dc; opacity: .8; }
+  .pm-row .pm-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .pm-name {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; font-weight: 600;
+    word-break: break-all;
+  }
+  .pm-path { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--muted); }
+  .pm-type { font-size: 11px; color: var(--muted); background: var(--bg); border: 1px solid var(--border); border-radius: 5px; padding: 0 6px; }
+  .pm-req { font-size: 10px; color: var(--miss); font-weight: 700; }
+  .pm-tag { font-size: 10px; padding: 1px 7px; border-radius: 999px; font-weight: 600; }
+  .pm-tag.ok { background: var(--ok-soft); color: var(--ok); }
+  .pm-tag.miss { background: var(--miss-soft); color: var(--miss); }
+  .pm-tag.meta { background: #f1f0f4; color: #98a2b3; }
+  .pm-matched-prop { font-size: 11px; color: var(--ok); }
+  .pm-desc { font-size: 11px; color: var(--muted); line-height: 1.45; max-height: 3.2em; overflow: hidden; }
+</style>
+</head>
+<body>
+<header>
+  <div class="head-row">
+    <div>
+      <h1>CloudControl OpenAPI 覆盖率</h1>
+      <p>展示各服务全量 OpenAPI，并标记是否被 CloudControl 资源类型的 handlers 引用 · <span id="gen"></span></p>
+    </div>
+    <button id="refreshBtn" class="refresh">
+      <span class="ri">↻</span><span id="refreshLabel">刷新数据</span>
+    </button>
+  </div>
+</header>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="spinner" id="spinner"></span>
+      <strong id="modalTitle">正在刷新数据…</strong>
+    </div>
+    <div class="modal-sub" id="modalSub">重新调用 CloudControl API 与 API Explorer 获取最新数据</div>
+    <pre class="loglines" id="logBox"></pre>
+    <div class="modal-foot">
+      <button id="closeModal" class="btn-ghost" disabled>关闭</button>
+    </div>
+  </div>
+</div>
+
+<div class="drawer-scrim" id="drawerScrim"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <div>
+      <div class="drawer-title" id="drawerTitle">资源类型</div>
+      <div class="drawer-sub" id="drawerSub"></div>
+    </div>
+    <button class="drawer-close" id="drawerClose">×</button>
+  </div>
+  <div class="drawer-tabs" id="drawerTabs">
+    <button data-tab="handlers" class="active">Handlers</button>
+    <button data-tab="json">完整 JSON</button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+</aside>
+
+<div class="drawer-scrim" id="pmScrim"></div>
+<aside class="drawer" id="pmDrawer">
+  <div class="drawer-head">
+    <div>
+      <div class="drawer-title" id="pmTitle">API 参数分析</div>
+      <div class="drawer-sub" id="pmSub"></div>
+    </div>
+    <button class="drawer-close" id="pmClose">×</button>
+  </div>
+  <div class="drawer-body" id="pmBody"></div>
+</aside>
+
+<div class="layout">
+  <aside id="sidebar">
+    <input class="search" id="svcSearch" placeholder="搜索服务…" />
+    <div id="svcList"></div>
+  </aside>
+  <main id="main">
+    <div class="empty">加载中…</div>
+  </main>
+</div>
+
+<script>
+const EXCLUDE_KEY = "ccapi_excluded_apis";
+const state = { data: null, current: null, filter: "", mode: "all", excluded: loadExcluded() };
+
+function loadExcluded() {
+  try { return new Set(JSON.parse(localStorage.getItem(EXCLUDE_KEY) || "[]")); }
+  catch (e) { return new Set(); }
+}
+function saveExcluded() {
+  localStorage.setItem(EXCLUDE_KEY, JSON.stringify([...state.excluded]));
+}
+function exKey(s, action) { return s.service + "::" + action; }
+function isExcluded(s, action) { return state.excluded.has(exKey(s, action)); }
+
+// Effective stats: excluded APIs drop out of the denominator (and numerator).
+function svcStats(s) {
+  let total = 0, covered = 0, excluded = 0;
+  s.groups.forEach(g => g.apis.forEach(a => {
+    if (isExcluded(s, a.action)) { excluded++; return; }
+    total++;
+    if (a.covered) covered++;
+  }));
+  return { total, covered, notCovered: total - covered, excluded };
+}
+
+async function load(keepSelection) {
+  const prevName = keepSelection && state.current ? state.current.service : null;
+  try {
+    const res = await fetch("coverage-data.json?_=" + Date.now());
+    state.data = await res.json();
+  } catch (e) {
+    document.getElementById("main").innerHTML =
+      '<div class="empty">无法加载 coverage-data.json，请通过 <code>python3 server.py</code> 启动后访问。</div>';
+    return;
+  }
+  document.getElementById("gen").textContent =
+    "生成于 " + new Date(state.data.generatedAt).toLocaleString("zh-CN");
+  state.data.services.sort((a, b) => a.service.localeCompare(b.service));
+  renderSidebar();
+  const target = prevName
+    ? state.data.services.find(s => s.service === prevName) || state.data.services[0]
+    : state.data.services[0];
+  selectService(target);
+}
+
+function pct(s) { const st = svcStats(s); return st.total ? Math.round((st.covered / st.total) * 100) : 0; }
+
+function renderSidebar() {
+  const q = document.getElementById("svcSearch").value.trim().toLowerCase();
+  const list = document.getElementById("svcList");
+  list.innerHTML = "";
+  state.data.services
+    .filter(s => !q || s.service.toLowerCase().includes(q) ||
+      (s.serviceCode || "").toLowerCase().includes(q))
+    .forEach(s => {
+      const st = svcStats(s);
+      const el = document.createElement("div");
+      el.className = "svc" + (state.current === s ? " active" : "");
+      el.innerHTML = `<span class="name">${s.service}</span><span class="pct">${st.covered}/${st.total} · ${pct(s)}%</span>`;
+      el.onclick = () => selectService(s);
+      list.appendChild(el);
+    });
+}
+
+function selectService(s) {
+  state.current = s;
+  state.filter = "";
+  state.mode = "all";
+  renderSidebar();
+  renderMain();
+}
+
+function renderMain() {
+  const s = state.current;
+  const st = svcStats(s);
+  const main = document.getElementById("main");
+  main.innerHTML = `
+    <div class="meta-row">
+      <div class="stat"><div class="k">服务</div><div class="v">${s.service}</div></div>
+      <div class="stat"><div class="k">计入总数</div><div class="v">${st.total}</div></div>
+      <div class="stat ok"><div class="k">已覆盖</div><div class="v">${st.covered}</div></div>
+      <div class="stat miss"><div class="k">未覆盖</div><div class="v">${st.notCovered}</div></div>
+      <div class="stat"><div class="k">已排除</div><div class="v">${st.excluded}</div></div>
+      <div class="bar"><i style="width:${pct(s)}%"></i></div>
+      <div class="stat"><div class="k">覆盖率</div><div class="v">${pct(s)}%</div></div>
+    </div>
+    <div class="note">
+      service code: <code class="v">${s.serviceCode || "—"}</code>
+      · API 版本: <code class="v">${s.version || "—"}</code>
+      · 资源类型 ${s.resourceTypes.length} 个（点击查看详情）
+      ${st.excluded ? ` · <a class="doc" id="clearEx" href="javascript:void(0)">清除 ${st.excluded} 个排除</a>` : ""}
+    </div>
+    <div class="rtchips" id="rtchips">
+      ${s.resourceTypes.map(t =>
+        `<button class="rtchip" data-type="${t}">${shortType(t)}</button>`).join("")}
+    </div>
+    <div class="controls" style="margin-top:14px">
+      <input class="filter-input" id="apiFilter" placeholder="过滤 Action / 中文名…" value="${state.filter}" />
+      <div class="seg" id="modeSeg">
+        <button data-m="all" class="${state.mode==='all'?'active':''}">全部</button>
+        <button data-m="covered" class="${state.mode==='covered'?'active':''}">已覆盖</button>
+        <button data-m="miss" class="${state.mode==='miss'?'active':''}">未覆盖</button>
+        <button data-m="excluded" class="${state.mode==='excluded'?'active':''}">已排除</button>
+      </div>
+      <div class="legend">
+        <span><i class="dot ok"></i>已覆盖</span>
+        <span><i class="dot miss"></i>未覆盖</span>
+      </div>
+    </div>
+    <div id="groups"></div>
+  `;
+  const fi = document.getElementById("apiFilter");
+  fi.oninput = () => { state.filter = fi.value; renderGroups(); };
+  document.getElementById("modeSeg").onclick = (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    state.mode = b.dataset.m;
+    document.querySelectorAll("#modeSeg button").forEach(x =>
+      x.classList.toggle("active", x === b));
+    renderGroups();
+  };
+  document.getElementById("rtchips").onclick = (e) => {
+    const b = e.target.closest(".rtchip"); if (!b) return;
+    openTypeDrawer(b.dataset.type);
+  };
+  const clearEx = document.getElementById("clearEx");
+  if (clearEx) clearEx.onclick = () => {
+    s.groups.forEach(g => g.apis.forEach(a => state.excluded.delete(exKey(s, a.action))));
+    saveExcluded();
+    renderSidebar();
+    renderMain();
+  };
+  renderGroups();
+}
+
+function renderGroups() {
+  const s = state.current;
+  const q = state.filter.trim().toLowerCase();
+  const wrap = document.getElementById("groups");
+  wrap.innerHTML = "";
+  let shown = 0;
+
+  s.groups.forEach(g => {
+    const apis = g.apis.filter(a => {
+      const ex = isExcluded(s, a.action);
+      if (state.mode === "covered" && (!a.covered || ex)) return false;
+      if (state.mode === "miss" && (a.covered || ex)) return false;
+      if (state.mode === "excluded" && !ex) return false;
+      if (q && !a.action.toLowerCase().includes(q) &&
+          !(a.nameCn || "").toLowerCase().includes(q)) return false;
+      return true;
+    });
+    if (!apis.length) return;
+    shown += apis.length;
+    // group badge counts effective (non-excluded) coverage
+    let gTotal = 0, gCov = 0;
+    g.apis.forEach(a => { if (!isExcluded(s, a.action)) { gTotal++; if (a.covered) gCov++; } });
+    const det = document.createElement("details");
+    det.className = "group";
+    det.open = true;
+    const rows = apis.map(a => {
+      const ex = isExcluded(s, a.action);
+      const statusPill = ex
+        ? '<span class="pill ex">已排除</span>'
+        : `<span class="pill ${a.covered ? "ok" : "miss"}">${a.covered ? "已覆盖" : "未覆盖"}</span>`;
+      return `
+      <tr class="${ex ? "row-ex" : ""}">
+        <td class="status">${statusPill}</td>
+        <td class="action">${a.action}</td>
+        <td class="cn">${a.nameCn || ""}</td>
+        <td class="types">${(a.byTypes || []).map(t => `<span class="tname">${shortType(t)}</span>`).join("")}</td>
+        <td class="drill">
+          <button class="drill-btn" data-drill="${a.action}" title="下钻：API 参数 vs 资源属性匹配">⤵ 参数</button>
+        </td>
+        <td class="toggle">
+          <label class="switch" title="计入覆盖率分母">
+            <input type="checkbox" data-action="${a.action}" ${ex ? "" : "checked"}>
+            <span class="track"></span>
+          </label>
+        </td>
+      </tr>`;
+    }).join("");
+    det.innerHTML = `
+      <summary>
+        <span class="chev">▶</span>
+        <span>${g.name || "未分组"}</span>
+        <span class="gcount">${apis.length} 个</span>
+        <span class="gbadge" style="margin-left:auto">${gCov}/${gTotal} 覆盖</span>
+      </summary>
+      <table><tbody>${rows}</tbody></table>`;
+    wrap.appendChild(det);
+  });
+
+  if (!shown) wrap.innerHTML = '<div class="empty">没有匹配的 OpenAPI。</div>';
+
+  wrap.querySelectorAll(".drill-btn[data-drill]").forEach(btn => {
+    btn.onclick = () => openParamDrawer(s, btn.dataset.drill);
+  });
+
+  wrap.querySelectorAll('input[type="checkbox"][data-action]').forEach(cb => {
+    cb.onchange = () => {
+      const key = exKey(s, cb.dataset.action);
+      if (cb.checked) state.excluded.delete(key);   // checked = counted
+      else state.excluded.add(key);                 // unchecked = excluded
+      saveExcluded();
+      if (state.mode === "all") {
+        updateStatsOnly();        // light update, preserve scroll/open state
+      } else {
+        renderSidebar();          // filtered views must re-filter rows
+        renderMain();
+      }
+    };
+  });
+}
+
+// Re-render stats + sidebar without rebuilding the whole table (keeps scroll/open state).
+function updateStatsOnly() {
+  const s = state.current;
+  const st = svcStats(s);
+  renderSidebar();
+  const cells = document.querySelectorAll(".meta-row .stat .v");
+  // order: 服务, 计入总数, 已覆盖, 未覆盖, 已排除, (bar), 覆盖率
+  if (cells.length >= 6) {
+    cells[1].textContent = st.total;
+    cells[2].textContent = st.covered;
+    cells[3].textContent = st.notCovered;
+    cells[4].textContent = st.excluded;
+    cells[5].textContent = pct(s) + "%";
+  }
+  const bar = document.querySelector(".meta-row .bar > i");
+  if (bar) bar.style.width = pct(s) + "%";
+  // update each row's status pill + class to reflect exclusion live
+  document.querySelectorAll("#groups tr").forEach(tr => {
+    const cb = tr.querySelector('input[data-action]');
+    if (!cb) return;
+    const ex = isExcluded(s, cb.dataset.action);
+    tr.classList.toggle("row-ex", ex);
+  });
+  // refresh group badges + the clear-link in note
+  refreshGroupBadges();
+  const note = document.querySelector(".note");
+  if (note) renderMainNoteClear(note, st);
+}
+
+function refreshGroupBadges() {
+  const s = state.current;
+  const dets = document.querySelectorAll("#groups details.group");
+  // recompute per visible group from data, matching by group name text
+  dets.forEach(det => {
+    const nameEl = det.querySelector("summary > span:nth-child(2)");
+    if (!nameEl) return;
+    const gname = nameEl.textContent;
+    const g = s.groups.find(x => (x.name || "未分组") === gname);
+    if (!g) return;
+    let gTotal = 0, gCov = 0;
+    g.apis.forEach(a => { if (!isExcluded(s, a.action)) { gTotal++; if (a.covered) gCov++; } });
+    const badge = det.querySelector(".gbadge");
+    if (badge) badge.textContent = `${gCov}/${gTotal} 覆盖`;
+    // update each row pill in this group
+    det.querySelectorAll("tr").forEach(tr => {
+      const cb = tr.querySelector('input[data-action]');
+      if (!cb) return;
+      const a = g.apis.find(x => x.action === cb.dataset.action);
+      if (!a) return;
+      const ex = isExcluded(s, a.action);
+      const pill = tr.querySelector(".pill");
+      if (pill) {
+        pill.className = "pill " + (ex ? "ex" : a.covered ? "ok" : "miss");
+        pill.textContent = ex ? "已排除" : a.covered ? "已覆盖" : "未覆盖";
+      }
+    });
+  });
+}
+
+function renderMainNoteClear(note, st) {
+  // rebuild only if the excluded count visibility changed
+  const hasLink = !!note.querySelector("#clearEx");
+  if (!!st.excluded === hasLink) return;
+  renderMain();
+}
+
+function shortType(t) {
+  const p = t.split("::");
+  return p.length >= 3 ? p[2] : t;
+}
+
+// ---- Resource type detail drawer ------------------------------------------
+const drawer = document.getElementById("drawer");
+const drawerScrim = document.getElementById("drawerScrim");
+let detailsCache = null;
+const drawerState = { type: null, raw: null, tab: "handlers" };
+
+async function getDetails() {
+  if (detailsCache) return detailsCache;
+  const res = await fetch("ccapi-resourcetype-details.json?_=" + Date.now());
+  detailsCache = await res.json();
+  return detailsCache;
+}
+
+function closeDrawer() {
+  drawer.classList.remove("show");
+  drawerScrim.classList.remove("show");
+}
+
+async function openTypeDrawer(typeName) {
+  drawerState.type = typeName;
+  drawerState.tab = "handlers";
+  document.getElementById("drawerTitle").textContent = typeName;
+  document.getElementById("drawerSub").textContent = "加载中…";
+  document.getElementById("drawerBody").innerHTML =
+    '<div class="drawer-loading">加载资源详情…</div>';
+  setDrawerTab("handlers");
+  drawer.classList.add("show");
+  drawerScrim.classList.add("show");
+
+  let data;
+  try { data = await getDetails(); }
+  catch (e) {
+    document.getElementById("drawerBody").innerHTML =
+      '<div class="drawer-loading">无法加载 ccapi-resourcetype-details.json。</div>';
+    return;
+  }
+  drawerState.raw = data[typeName] || null;
+  const desc = drawerState.raw && drawerState.raw.Description ? drawerState.raw.Description : "";
+  document.getElementById("drawerSub").textContent = desc || "（无描述）";
+  renderDrawerBody();
+}
+
+function setDrawerTab(tab) {
+  drawerState.tab = tab;
+  document.querySelectorAll("#drawerTabs button").forEach(b =>
+    b.classList.toggle("active", b.dataset.tab === tab));
+}
+
+function renderDrawerBody() {
+  const body = document.getElementById("drawerBody");
+  const raw = drawerState.raw;
+  if (!raw) { body.innerHTML = '<div class="drawer-loading">未找到该资源类型的详情。</div>'; return; }
+
+  if (drawerState.tab === "handlers") {
+    const handlers = (raw.Schema && raw.Schema.handlers) || {};
+    const keys = Object.keys(handlers);
+    if (!keys.length) { body.innerHTML = '<div class="drawer-loading">该资源没有 handlers。</div>'; return; }
+    const order = ["create", "read", "update", "delete", "list"];
+    keys.sort((a, b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99));
+    body.innerHTML = keys.map(op => {
+      const perms = (handlers[op].permissions || []);
+      return `
+        <div class="handler-card">
+          <div class="hc-head"><span class="hc-op">${op}</span>
+            <span class="hc-tag">${perms.length} 权限</span></div>
+          <div class="perm-list">
+            ${perms.length
+              ? perms.map(p => `<span class="perm">${p}</span>`).join("")
+              : '<span class="perm dim">无</span>'}
+          </div>
+        </div>`;
+    }).join("");
+  } else {
+    body.innerHTML = `<pre class="json-view">${escapeHtml(JSON.stringify(raw, null, 2))}</pre>`;
+  }
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+document.getElementById("drawerClose").onclick = closeDrawer;
+drawerScrim.onclick = closeDrawer;
+document.getElementById("drawerTabs").onclick = (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  setDrawerTab(b.dataset.tab);
+  renderDrawerBody();
+};
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && drawer.classList.contains("show")) closeDrawer();
+});
+
+// ---- API param vs resource property matching drawer -----------------------
+const pmDrawer = document.getElementById("pmDrawer");
+const pmScrim = document.getElementById("pmScrim");
+const pmState = { service: null, action: null, params: [], method: "", propIndex: null, types: [], filter: "" };
+
+function closePmDrawer() {
+  pmDrawer.classList.remove("show");
+  pmScrim.classList.remove("show");
+}
+
+// Recursively collect every property name declared in a resource schema
+// (top-level properties + nested definitions), normalized lower-case.
+function collectPropNames(node, names, depth = 0) {
+  if (!node || typeof node !== "object" || depth > 10) return;
+  if (node.properties && typeof node.properties === "object") {
+    for (const [k, v] of Object.entries(node.properties)) {
+      names.set(k.toLowerCase(), k);
+      collectPropNames(v, names, depth + 1);
+    }
+  }
+  if (node.definitions && typeof node.definitions === "object") {
+    for (const v of Object.values(node.definitions)) collectPropNames(v, names, depth + 1);
+  }
+  if (node.items) collectPropNames(node.items, names, depth + 1);
+}
+
+// Build a name->originalName map across the resource types relevant to this API.
+function buildPropIndex(s, action) {
+  // Prefer the types this action is mapped to; fall back to all service types.
+  let types = [];
+  s.groups.forEach(g => g.apis.forEach(a => {
+    if (a.action === action && a.byTypes && a.byTypes.length) types = a.byTypes.slice();
+  }));
+  if (!types.length) types = s.resourceTypes.slice();
+  const names = new Map();
+  for (const t of types) {
+    const raw = (detailsCache && detailsCache[t]) || null;
+    if (raw && raw.Schema) collectPropNames(raw.Schema, names);
+  }
+  return { names, types };
+}
+
+// Match a param name against the property index. Tries exact match, then
+// conservative plural<->singular variants (e.g. list filters like
+// `InstanceIds` -> property `InstanceId`, `Tags` -> `Tag`).
+function matchPropName(name, names) {
+  const n = (name || "").toLowerCase();
+  if (!n) return null;
+  const variants = [n];
+  if (n.endsWith("ids")) variants.push(n.slice(0, -1));        // InstanceIds -> InstanceId
+  if (n.endsWith("es")) variants.push(n.slice(0, -2));         // Addresses -> Address
+  if (n.endsWith("s")) variants.push(n.slice(0, -1));          // Tags -> Tag
+  for (const v of variants) {
+    if (names.has(v)) return names.get(v);
+  }
+  return null;
+}
+
+async function openParamDrawer(s, action) {
+  pmState.service = s;
+  pmState.action = action;
+  pmState.filter = "";
+  pmState.params = [];
+  document.getElementById("pmTitle").textContent = action;
+  document.getElementById("pmSub").textContent = `${s.service} · 加载参数中…`;
+  document.getElementById("pmBody").innerHTML = '<div class="drawer-loading">从 OpenAPI 拉取参数并匹配资源属性…</div>';
+  pmDrawer.classList.add("show");
+  pmScrim.classList.add("show");
+
+  // Resource property index needs the details file loaded.
+  try { await getDetails(); } catch (e) { /* matching just degrades */ }
+  const { names, types } = buildPropIndex(s, action);
+  pmState.propIndex = names;
+  pmState.types = types;
+
+  if (!s.serviceCode || !s.version) {
+    document.getElementById("pmBody").innerHTML =
+      '<div class="drawer-loading">该服务未解析出 serviceCode/version，无法获取 OpenAPI 参数。</div>';
+    return;
+  }
+
+  let data;
+  try {
+    const url = `/api/apiparams?serviceCode=${encodeURIComponent(s.serviceCode)}` +
+      `&version=${encodeURIComponent(s.version)}&action=${encodeURIComponent(action)}`;
+    const res = await fetch(url);
+    data = await res.json();
+    if (!res.ok || data.error) throw new Error(data.error || ("HTTP " + res.status));
+  } catch (e) {
+    document.getElementById("pmBody").innerHTML =
+      `<div class="drawer-loading">无法获取 OpenAPI 参数：${escapeHtml(String(e.message || e))}<br><br>` +
+      `请通过 <code>python3 server.py</code> 启动后访问（浏览器无法直接跨域调用 API Explorer）。</div>`;
+    return;
+  }
+
+  pmState.method = data.method || "";
+  // annotate each param with its match result
+  pmState.params = (data.params || []).map(p => {
+    const hit = matchPropName(p.name, names);
+    return { ...p, matched: !!hit, matchedProp: hit || null };
+  });
+  document.getElementById("pmSub").textContent =
+    `${s.service} · ${pmState.method.toUpperCase()} · 资源属性来源 ${types.length} 个类型`;
+  renderPmBody();
+}
+
+function renderPmBody() {
+  const body = document.getElementById("pmBody");
+  const all = pmState.params;
+  // attribute params = non-meta; meta params excluded from match stats
+  const attrs = all.filter(p => !p.isMeta);
+  const metas = all.filter(p => p.isMeta);
+  const matched = attrs.filter(p => p.matched);
+  const unmatched = attrs.filter(p => !p.matched);
+  const q = pmState.filter.trim().toLowerCase();
+  const flt = list => !q ? list : list.filter(p =>
+    p.name.toLowerCase().includes(q) ||
+    (p.path || "").toLowerCase().includes(q) ||
+    (p.description || "").toLowerCase().includes(q));
+
+  const rtChips = pmState.types.map(t => `<code class="v">${shortType(t)}</code>`).join("");
+
+  const rowHtml = (p, cls, tag) => {
+    const req = p.required ? '<span class="pm-req" title="必填">必填</span>' : "";
+    const pathLine = (p.path && p.path !== p.name)
+      ? `<span class="pm-path">${escapeHtml(p.path)}</span>` : "";
+    const matchedLine = p.matched
+      ? `<span class="pm-matched-prop">↳ 匹配属性 ${escapeHtml(p.matchedProp)}</span>` : "";
+    const desc = p.description
+      ? `<div class="pm-desc">${escapeHtml(p.description.split("\n")[0])}</div>` : "";
+    return `
+      <div class="pm-row ${cls}">
+        <div class="pm-head">
+          <span class="pm-name">${escapeHtml(p.name)}</span>
+          <span class="pm-type">${escapeHtml(p.type || "")}</span>
+          ${req}
+          <span class="pm-tag ${tag}" style="margin-left:auto">${
+            tag === "ok" ? "有属性" : tag === "miss" ? "无属性" : "非属性"}</span>
+        </div>
+        ${pathLine}
+        ${matchedLine}
+        ${desc}
+      </div>`;
+  };
+
+  const section = (title, list, cls, tag) => {
+    const shown = flt(list);
+    if (!shown.length) return "";
+    return `
+      <div class="pm-sec-title">${title}<span class="cnt">${shown.length}${
+        shown.length !== list.length ? " / " + list.length : ""} 个</span></div>
+      <div class="pm-list">${shown.map(p => rowHtml(p, cls, tag)).join("")}</div>`;
+  };
+
+  body.innerHTML = `
+    <div class="pm-stats">
+      <div class="pm-stat"><div class="k">属性参数</div><div class="v">${attrs.length}</div></div>
+      <div class="pm-stat ok"><div class="k">有对应属性</div><div class="v">${matched.length}</div></div>
+      <div class="pm-stat miss"><div class="k">无对应属性</div><div class="v">${unmatched.length}</div></div>
+      <div class="pm-stat"><div class="k">非属性(已忽略)</div><div class="v">${metas.length}</div></div>
+    </div>
+    <div class="pm-rt">资源属性来源：${rtChips || "（无）"}</div>
+    <div class="pm-controls">
+      <input class="filter-input" id="pmFilter" placeholder="过滤参数名 / 描述…" value="${escapeHtml(pmState.filter)}" />
+    </div>
+    ${section('<span style="color:var(--miss)">⚠ 无对应资源属性的参数</span>', unmatched, "unmatched", "miss")}
+    ${section('<span style="color:var(--ok)">✓ 有对应资源属性的参数</span>', matched, "matched", "ok")}
+    ${section('非属性参数（分页 / 幂等等，已从匹配中排除）', metas, "meta", "meta")}
+  `;
+  const fi = document.getElementById("pmFilter");
+  if (fi) fi.oninput = () => { pmState.filter = fi.value; renderPmBody(); };
+}
+
+document.getElementById("pmClose").onclick = closePmDrawer;
+pmScrim.onclick = closePmDrawer;
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && pmDrawer.classList.contains("show")) closePmDrawer();
+});
+
+// ---- Refresh: stream the real pipeline via SSE ----------------------------
+const refreshBtn = document.getElementById("refreshBtn");
+const overlay = document.getElementById("overlay");
+const logBox = document.getElementById("logBox");
+const modalTitle = document.getElementById("modalTitle");
+const modalSub = document.getElementById("modalSub");
+const spinner = document.getElementById("spinner");
+const closeModal = document.getElementById("closeModal");
+
+function appendLog(text, cls) {
+  const span = document.createElement("span");
+  if (cls) span.className = cls;
+  span.textContent = text + "\n";
+  logBox.appendChild(span);
+  logBox.scrollTop = logBox.scrollHeight;
+}
+
+function setRefreshing(on) {
+  refreshBtn.disabled = on;
+  refreshBtn.classList.toggle("spin", on);
+  document.getElementById("refreshLabel").textContent = on ? "刷新中…" : "刷新数据";
+  spinner.classList.toggle("hidden", !on);
+  closeModal.disabled = on;
+}
+
+async function doRefresh() {
+  overlay.classList.add("show");
+  logBox.innerHTML = "";
+  modalTitle.textContent = "正在刷新数据…";
+  modalSub.textContent = "重新调用 CloudControl API 与 API Explorer 获取最新数据";
+  setRefreshing(true);
+
+  let resp;
+  try {
+    resp = await fetch("/api/refresh", { method: "POST" });
+  } catch (e) {
+    appendLog("无法连接到 server.py（请用 python3 server.py 启动服务）", "lg-err");
+    finishRefresh(false);
+    return;
+  }
+  if (!resp.ok || !resp.body) {
+    appendLog("刷新接口返回错误：" + resp.status, "lg-err");
+    finishRefresh(false);
+    return;
+  }
+
+  const reader = resp.body.getReader();
+  const decoder = new TextDecoder();
+  let buf = "";
+  let ok = true;
+  let finished = false;
+
+  while (!finished) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buf += decoder.decode(value, { stream: true });
+    const parts = buf.split("\n\n");
+    buf = parts.pop();
+    for (const part of parts) {
+      const line = part.replace(/^data: /, "").trim();
+      if (!line) continue;
+      let evt;
+      try { evt = JSON.parse(line); } catch { continue; }
+      if (evt.phase === "step") {
+        appendLog("▶ " + evt.message, "lg-step");
+      } else if (evt.phase === "log") {
+        const c = /fail|error|错误|失败/i.test(evt.line) ? "lg-err"
+          : /ok |done|完成|written|->/i.test(evt.line) ? "lg-ok" : "";
+        appendLog(evt.line, c);
+      } else if (evt.phase === "error") {
+        ok = false;
+        finished = true;
+        appendLog("✗ " + evt.message, "lg-err");
+      } else if (evt.phase === "done") {
+        finished = true;
+        appendLog("✓ " + evt.message, "lg-ok");
+        if (evt.summary && evt.summary.services) {
+          appendLog(`  服务 ${evt.summary.services} 个 · OpenAPI ${evt.summary.totalApis} 个 · 已覆盖 ${evt.summary.covered} 个`, "lg-ok");
+        }
+      }
+    }
+  }
+  try { await reader.cancel(); } catch (e) {}
+  finishRefresh(ok);
+}
+
+async function finishRefresh(ok) {
+  setRefreshing(false);
+  modalTitle.textContent = ok ? "刷新完成" : "刷新失败";
+  modalSub.textContent = ok ? "已加载最新数据" : "请检查服务器日志与凭证后重试";
+  if (ok) await load(true);
+}
+
+refreshBtn.onclick = doRefresh;
+closeModal.onclick = () => overlay.classList.remove("show");
+overlay.onclick = (e) => { if (e.target === overlay && !refreshBtn.disabled) overlay.classList.remove("show"); };
+
+document.getElementById("svcSearch").oninput = renderSidebar;
+load();
+</script>
+</body>
+</html>
