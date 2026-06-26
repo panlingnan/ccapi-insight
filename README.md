@@ -2,7 +2,7 @@
 
 展示各服务全量 OpenAPI，并标记哪些 Action 已被 Volcengine CloudControl 资源类型的 handlers 引用；同时支持按 API 下钻，将 OpenAPI 参数与资源类型属性逐一匹配，找出「有参数但无对应资源属性」的缺口。
 
-线上（生产）：部署在 Vercel，`panlingnans-projects` 团队下。
+线上（生产）：https://ccapi-insight.vercel.app/ （Vercel，`panlingnans-projects` 团队，已接 GitHub 自动部署）
 仓库：https://github.com/panlingnan/ccapi-insight
 
 ---
@@ -71,7 +71,7 @@ python3 server.py            # http://127.0.0.1:8765
 ## 管理员：刷新数据并更新线上
 
 > 线上是**只读快照**。普通用户无需任何操作即可看到最新已发布数据。
-> 更新数据是**管理员**操作：在本地用真实凭证重新生成数据，再重新部署。
+> 更新数据是**管理员**操作：在本地用真实凭证重新生成数据，再 `git push`（Vercel 自动部署）。
 
 ### 一键脚本（推荐）
 
@@ -86,9 +86,8 @@ export VOLCENGINE_SECRET_KEY="你的 SecretKey"
 
 脚本依次执行：
 
-1. 重新抓取全量资源类型 + 各服务 OpenAPI 列表，重新生成三个数据 JSON
-2. 若数据有变化，commit 并 `git push`
-3. `vercel --prod` 部署到生产
+1. 重新抓取全量资源类型 + 各服务 OpenAPI 列表，重新生成数据 JSON
+2. 若数据有变化，commit 并 `git push` —— **Vercel 检测到 push 后自动部署到生产**
 
 ### 手动分步（等价）
 
@@ -97,28 +96,24 @@ export ACCESS_KEY="$VOLCENGINE_ACCESS_KEY"   # 流水线脚本读取 ACCESS_KEY 
 export SECRET_KEY="$VOLCENGINE_SECRET_KEY"
 python3 fetch_ccapi_resourcetypes.py         # -> ccapi-resourcetypes.json / ccapi-resourcetype-details.json
 python3 build_coverage_data.py               # -> coverage-data.json
-git add coverage-data.json ccapi-resourcetype-details.json ccapi-resourcetypes.json
+git add coverage-data.json ccapi-resourcetype-details.json ccapi-resourcetypes.json excluded-apis.json
 git commit -m "data: refresh CloudControl coverage"
-git push
-vercel --prod --yes
+git push                                     # Vercel 自动部署
 ```
 
-> 前提：本地已 `vercel login` 且项目已 link 到 `panlingnans-projects`。
-> 若 Vercel 已连接 GitHub 仓库（Settings → Git），则 `git push` 会自动触发部署，脚本的 `vercel --prod` 是冗余保险。
+> 项目已接 GitHub 自动部署，**任何 push 到 `main` 都会触发 Vercel 重新部署**，无需再跑 `vercel` 命令。
+> 改代码也一样：编辑 → `git commit` → `git push` 即可上线。
 
 ---
 
-## 部署到 Vercel（首次）
+## 部署到 Vercel
 
-```bash
-vercel login
-vercel link --repo --scope panlingnans-projects   # 关联 GitHub 仓库，开启 push 自动部署
-vercel --prod --scope panlingnans-projects
-```
+项目已通过 Vercel 的 GitHub 集成接好：**push 到 `main` 即自动部署**到 https://ccapi-insight.vercel.app/ 。
+日常更新只需 `git push`，无需任何 `vercel` CLI 命令。
 
 ### 访问控制
 
-默认部署带 **Deployment Protection (SSO)**，所有 URL 会跳转 Vercel 登录，仅团队成员可见。如需对外分享：
+如果部署带 **Deployment Protection (SSO)**，URL 会跳转 Vercel 登录、仅团队成员可见。对外分享方式：
 
 - **公开访问**：项目 Settings → Deployment Protection → 关闭 Vercel Authentication
 - **临时分享**：项目 Settings → Deployment Protection → Protection Bypass / Shareable Links → Create Link，复制带 token 的链接发给访问者

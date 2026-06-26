@@ -13,7 +13,9 @@
 # What it does:
 #   1. Re-fetch all resource types + full OpenAPI surface (fetch + build scripts)
 #   2. Commit the regenerated JSON and push to GitHub
-#   3. Deploy to Vercel production (vercel --prod)
+#
+# Pushing to GitHub auto-deploys to Vercel production
+# (https://ccapi-insight.vercel.app/), so no separate deploy step is needed.
 
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -31,24 +33,20 @@ if [[ -z "${ACCESS_KEY}" || -z "${SECRET_KEY}" ]]; then
 fi
 
 # --- 1. regenerate data ----------------------------------------------------
-echo "==> [1/3] Fetching resource types + OpenAPI surface ..."
+echo "==> [1/2] Fetching resource types + OpenAPI surface ..."
 python3 fetch_ccapi_resourcetypes.py
 python3 build_coverage_data.py
 
-# --- 2. commit + push ------------------------------------------------------
+# --- 2. commit + push (auto-deploys via Vercel git integration) ------------
 # Include excluded-apis.json so admin exclusions persist across deploys.
 DATA_FILES=(coverage-data.json ccapi-resourcetype-details.json ccapi-resourcetypes.json excluded-apis.json)
 if git diff --quiet -- "${DATA_FILES[@]}"; then
-  echo "==> [2/3] No data changes; skipping commit."
+  echo "==> [2/2] No data changes; nothing to deploy."
 else
-  echo "==> [2/3] Committing + pushing updated data ..."
+  echo "==> [2/2] Committing + pushing updated data (Vercel auto-deploys) ..."
   git add "${DATA_FILES[@]}"
   git commit -m "data: refresh CloudControl coverage ($(date +%Y-%m-%d))"
   git push
 fi
 
-# --- 3. deploy to production ----------------------------------------------
-echo "==> [3/3] Deploying to Vercel production ..."
-vercel --prod --yes
-
-echo "==> Done. Production updated with the latest data."
+echo "==> Done. Push complete — Vercel will deploy https://ccapi-insight.vercel.app/ shortly."
