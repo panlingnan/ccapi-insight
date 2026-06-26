@@ -399,14 +399,44 @@
 
 <script>
 const EXCLUDE_KEY = "ccapi_excluded_apis";
-const state = { data: null, current: null, filter: "", mode: "all", excluded: loadExcluded() };
+const IS_LOCAL = ["localhost", "127.0.0.1", "0.0.0.0", ""].includes(location.hostname);
+const state = { data: null, current: null, filter: "", mode: "all", excluded: new Set() };
 
-function loadExcluded() {
-  try { return new Set(JSON.parse(localStorage.getItem(EXCLUDE_KEY) || "[]")); }
-  catch (e) { return new Set(); }
+// Persistent exclusions live in a committed excluded-apis.json (survives
+// deploys and is shared across browsers). localStorage is a per-browser
+// layer used for first-time migration and ephemeral edits on the read-only
+// deployed site. The committed file wins once it has content.
+async function loadExcluded() {
+  let baseline = [];
+  try {
+    const res = await fetch("excluded-apis.json?_=" + Date.now());
+    if (res.ok) baseline = await res.json();
+  } catch (e) { /* file may not exist yet */ }
+  let local = [];
+  try { local = JSON.parse(localStorage.getItem(EXCLUDE_KEY) || "[]"); }
+  catch (e) { local = []; }
+  const useBaseline = Array.isArray(baseline) && baseline.length > 0;
+  // Local admin migration: committed file is empty but this browser has
+  // prior exclusions -> seed the committed file from localStorage.
+  if (IS_LOCAL && !useBaseline && local.length) {
+    const seeded = new Set(local);
+    state.excluded = seeded;
+    saveExcludedToFile();
+  }
+  return new Set(useBaseline ? baseline : local);
 }
 function saveExcluded() {
   localStorage.setItem(EXCLUDE_KEY, JSON.stringify([...state.excluded]));
+  if (IS_LOCAL) saveExcludedToFile();   // admin: persist to committed file
+}
+async function saveExcludedToFile() {
+  try {
+    await fetch("/api/exclusions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify([...state.excluded].sort()),
+    });
+  } catch (e) { /* best effort; local-only */ }
 }
 function exKey(s, action) { return s.service + "::" + action; }
 function isExcluded(s, action) { return state.excluded.has(exKey(s, action)); }
@@ -432,6 +462,7 @@ async function load(keepSelection) {
       '<div class="empty">无法加载 coverage-data.json，请通过 <code>python3 server.py</code> 启动后访问。</div>';
     return;
   }
+  state.excluded = await loadExcluded();
   document.getElementById("gen").textContent =
     "生成于 " + new Date(state.data.generatedAt).toLocaleString("zh-CN");
   state.data.services.sort((a, b) => a.service.localeCompare(b.service));
@@ -977,8 +1008,6 @@ function setRefreshing(on) {
   spinner.classList.toggle("hidden", !on);
   closeModal.disabled = on;
 }
-
-const IS_LOCAL = ["localhost", "127.0.0.1", "0.0.0.0", ""].includes(location.hostname);
 
 async function doRefresh() {
   // On the deployed site there is no refresh backend: data is regenerated

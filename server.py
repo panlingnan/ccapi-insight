@@ -171,6 +171,8 @@ class Handler(SimpleHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/api/refresh":
             self._refresh()
+        elif self.path == "/api/exclusions":
+            self._save_exclusions()
         else:
             self.send_error(404, "Not Found")
 
@@ -180,6 +182,28 @@ class Handler(SimpleHTTPRequestHandler):
             self._api_params(urllib.parse.parse_qs(parsed.query))
         else:
             super().do_GET()
+
+    def _save_exclusions(self):
+        """Persist the excluded-API list to a committed JSON file (local admin).
+
+        The deployed site is read-only; this endpoint only exists on the local
+        dev server so an admin's exclusions become part of the repo and survive
+        deploys.
+        """
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+            raw = self.rfile.read(length) if length else b"[]"
+            data = json.loads(raw.decode("utf-8") or "[]")
+            if not isinstance(data, list) or not all(isinstance(x, str) for x in data):
+                self._send_json({"error": "expected a JSON array of strings"}, 400)
+                return
+            cleaned = sorted(set(data))
+            path = os.path.join(BASE, "excluded-apis.json")
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(cleaned, f, ensure_ascii=False, indent=2)
+            self._send_json({"ok": True, "count": len(cleaned)})
+        except Exception as e:  # noqa: BLE001
+            self._send_json({"error": f"保存排除列表失败：{e}"}, 500)
 
     def _send_json(self, obj, code=200):
         payload = json.dumps(obj, ensure_ascii=False).encode("utf-8")

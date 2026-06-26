@@ -36,7 +36,8 @@ python3 fetch_ccapi_resourcetypes.py
 python3 build_coverage_data.py
 
 # --- 2. commit + push ------------------------------------------------------
-DATA_FILES=(coverage-data.json ccapi-resourcetype-details.json ccapi-resourcetypes.json)
+# Include excluded-apis.json so admin exclusions persist across deploys.
+DATA_FILES=(coverage-data.json ccapi-resourcetype-details.json ccapi-resourcetypes.json excluded-apis.json)
 if git diff --quiet -- "${DATA_FILES[@]}"; then
   echo "==> [2/3] No data changes; skipping commit."
 else
