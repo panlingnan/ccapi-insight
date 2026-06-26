@@ -986,13 +986,13 @@ async function doRefresh() {
   if (!IS_LOCAL) {
     overlay.classList.add("show");
     logBox.innerHTML = "";
-    modalTitle.textContent = "数据更新需由管理员执行";
-    modalSub.textContent = "线上为静态快照，无法在浏览器端刷新";
-    appendLog("ℹ 该页面是只读的数据快照。", "lg-step");
-    appendLog("如需更新覆盖率数据，请联系管理员在本地执行刷新并重新部署：", "");
-    appendLog("  1. 本地运行刷新脚本（需配置 Volcengine AK/SK）", "");
-    appendLog("  2. 重新生成数据后推送，线上自动更新", "");
-    appendLog("✓ 普通用户无需任何操作即可查看最新已发布数据。", "lg-ok");
+    const when = state.data && state.data.generatedAt
+      ? new Date(state.data.generatedAt).toLocaleString("zh-CN")
+      : "未知时间";
+    modalTitle.textContent = "数据更新需由管理员操作";
+    modalSub.textContent = "线上为只读数据快照，不支持在浏览器端刷新";
+    appendLog("当前数据更新于 " + when + "。", "lg-step");
+    appendLog("仅支持从服务端操作，请联系管理员 @panlingnan 更新数据。", "");
     setRefreshing(false);
     closeModal.disabled = false;
     return;
