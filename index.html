@@ -978,7 +978,26 @@ function setRefreshing(on) {
   closeModal.disabled = on;
 }
 
+const IS_LOCAL = ["localhost", "127.0.0.1", "0.0.0.0", ""].includes(location.hostname);
+
 async function doRefresh() {
+  // On the deployed site there is no refresh backend: data is regenerated
+  // locally by an admin and redeployed. Show a notice instead of failing.
+  if (!IS_LOCAL) {
+    overlay.classList.add("show");
+    logBox.innerHTML = "";
+    modalTitle.textContent = "数据更新需由管理员执行";
+    modalSub.textContent = "线上为静态快照，无法在浏览器端刷新";
+    appendLog("ℹ 该页面是只读的数据快照。", "lg-step");
+    appendLog("如需更新覆盖率数据，请联系管理员在本地执行刷新并重新部署：", "");
+    appendLog("  1. 本地运行刷新脚本（需配置 Volcengine AK/SK）", "");
+    appendLog("  2. 重新生成数据后推送，线上自动更新", "");
+    appendLog("✓ 普通用户无需任何操作即可查看最新已发布数据。", "lg-ok");
+    setRefreshing(false);
+    closeModal.disabled = false;
+    return;
+  }
+
   overlay.classList.add("show");
   logBox.innerHTML = "";
   modalTitle.textContent = "正在刷新数据…";

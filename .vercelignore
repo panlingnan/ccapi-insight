@@ -3,6 +3,7 @@ server.py
 fetch_ccapi_resourcetypes.py
 build_coverage_data.py
 analyze_coverage.py
+refresh_and_deploy.sh
 __pycache__/
 *.pyc
 .DS_Store
